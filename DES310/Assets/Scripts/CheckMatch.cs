@@ -5,23 +5,35 @@ using UnityEngine;
 public class CheckMatch : MonoBehaviour
 {
 
-    public GameObject selectedMatch;
-    public GameObject matchee;
+    ThisCard thisCard;
     public GameObject matchZone;
     public GameObject matcheeZone;
+    public GameObject stage1;
+    public GameObject stage2;
+    public bool matched;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        matched = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if(selectedMatch = null)
+        //MatchCheck();
+    }
+    // Update is called once per frame
+    public void MatchCheck()
+    {
+        ThisCard thisCard = gameObject.GetComponentInChildren<ThisCard>();
+        if (thisCard.thisId == matchZone.GetComponentInChildren<ThisCard>().thisId)
         {
-            //selectedMatch = GameObject.
+            matched = true;
+            stage1.SetActive(false);
+            stage2.SetActive(true);
+            Debug.Log("MATCH BABY");
         }
+        
+
     }
 }

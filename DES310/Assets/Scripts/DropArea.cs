@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 
 public class DropArea : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
+    public CheckMatch matchee;
     //TODO: End on Drop
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -13,18 +14,19 @@ public class DropArea : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        //Debug.Log("Pointer Exit");
+        matchee.GetComponent<CheckMatch>().MatchCheck();
     }
     public void OnDrop(PointerEventData eventData)
     {
         Debug.Log(eventData.pointerDrag.name + " dropped in " + gameObject.name);
 
         Draggable d = eventData.pointerDrag.GetComponent<Draggable>();
+        
         if(d !=null)
         {
             d.parentHome = this.transform;
         }
-
+        
 
     }
 }

@@ -33,10 +33,11 @@ public class ThisCard : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    int Start()
     {
         thisId = Random.Range(1, 5); //Randomises card id from CardDatabase
         thisCard[0] = CardDataBase.cardList[thisId];
+        return thisId;
     }
 
     // Update is called once per frame

@@ -25,5 +25,6 @@ public class DropArea : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
             d.parentHome = this.transform;
         }
 
+
     }
 }

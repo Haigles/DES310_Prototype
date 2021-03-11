@@ -6,6 +6,7 @@ public class CardDraw : MonoBehaviour
 {
     public GameObject card;
     public GameObject playerHand;
+    public GameObject Matchee;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,14 @@ public class CardDraw : MonoBehaviour
         {
             GameObject.Destroy(child.gameObject);
         }
+        foreach (Transform child in Matchee.transform) //Clears matchee
+        {
+            GameObject.Destroy(child.gameObject);
+        }
+
+        GameObject matcheeCard = Instantiate(card, new Vector3(0, 0, 0), Quaternion.identity);
+        matcheeCard.transform.SetParent(Matchee.transform, false);
+
 
         for (var i = 0; i < 3; i ++)  //Creates cards as child to hand area
         {

@@ -6,6 +6,9 @@ TagManager:
   tags:
   - CardPool
   - GameManager
+  - MatchCard
+  - ChoiceCard
+  - Canvas
   layers:
   - Default
   - TransparentFX

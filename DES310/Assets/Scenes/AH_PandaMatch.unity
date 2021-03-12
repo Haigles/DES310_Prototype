@@ -132,7 +132,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 211235624}
+  - component: {fileID: 211235626}
   - component: {fileID: 211235623}
+  - component: {fileID: 211235625}
   m_Layer: 0
   m_Name: Game_Manager
   m_TagString: GameManager
@@ -152,14 +154,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9df25f547d113649b2bd73482ce8363, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  matchPosition: {fileID: 869120049}
-  choice1Position: {fileID: 1866287135}
-  choice2Position: {fileID: 969082632}
-  choice3Position: {fileID: 643439106}
+  matchPosition: {fileID: 869120050}
+  choicePositions:
+  - {fileID: 1866287136}
+  - {fileID: 969082633}
+  - {fileID: 643439107}
   cardPrefab: {fileID: 191839778896613843, guid: da5c65e09d02c0c4f9ae577111cb2115, type: 3}
   cardPool: {fileID: 1972406675}
   matchCards: []
   choiceCards: []
+  matchCard: {fileID: 0}
+  choices: []
 --- !u!4 &211235624
 Transform:
   m_ObjectHideFlags: 0
@@ -174,6 +179,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &211235625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 211235622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 524ded3390e0f354ab5c64bfc05f13fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  matchIndicator: {fileID: 928663183}
+  matchSetUp: {fileID: 211235623}
+  parentPenalty: 0
+  currentMatchCard: {fileID: 0}
+  currentChoices: []
+--- !u!114 &211235626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 211235622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b32796d157cdbdd4090c23e9393091bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
 --- !u!1 &643439106
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,6 +278,78 @@ RectTransform:
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 125}
   m_SizeDelta: {x: 1, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &928663182
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 928663185}
+  - component: {fileID: 928663184}
+  - component: {fileID: 928663183}
+  m_Layer: 5
+  m_Name: MatchIndicator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &928663183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928663182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 10912, guid: 0000000000000000f000000000000000, type: 0}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &928663184
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928663182}
+  m_CullTransparentMesh: 0
+--- !u!224 &928663185
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928663182}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1990451109}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -50, y: -50}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &969082632
 GameObject:
@@ -494,6 +601,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pandaMatchCards:
   - cardName: Jerry
+    cardPicture: {fileID: 2800000, guid: bfdaf2138f16d424daab0df0465191cd, type: 3}
     cardAge: 5
     cardParents: 
     cardLocation: UK
@@ -505,6 +613,7 @@ MonoBehaviour:
     valueHealth: 1
   pandaChoiceCards:
   - cardName: Terry
+    cardPicture: {fileID: 2800000, guid: 14146595490881f43aee6d42c8b718fe, type: 3}
     cardAge: 7
     cardParents: 
     cardLocation: China
@@ -515,6 +624,7 @@ MonoBehaviour:
     valueLocation: 3
     valueHealth: 3
   - cardName: Perry
+    cardPicture: {fileID: 2800000, guid: 4dedc5afd2286dc4f99515a8794548e8, type: 3}
     cardAge: 6
     cardParents: 
     cardLocation: Fance
@@ -525,6 +635,7 @@ MonoBehaviour:
     valueLocation: 1
     valueHealth: 0
   - cardName: Kerry
+    cardPicture: {fileID: 2800000, guid: c4bb011ee53021144ad47cb2ba560bf5, type: 3}
     cardAge: 5
     cardParents: 
     cardLocation: Russia
@@ -560,9 +671,10 @@ GameObject:
   - component: {fileID: 1990451108}
   - component: {fileID: 1990451107}
   - component: {fileID: 1990451106}
+  - component: {fileID: 1990451110}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -642,6 +754,7 @@ RectTransform:
   - {fileID: 1866287136}
   - {fileID: 969082633}
   - {fileID: 643439107}
+  - {fileID: 928663185}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -650,3 +763,16 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1990451110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990451105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ad550c4ec2883c41acea5c1d3d95d24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickResults: []

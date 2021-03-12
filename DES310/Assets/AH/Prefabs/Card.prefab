@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5903738593219135901}
   - component: {fileID: 2618895318055843914}
   m_Layer: 5
-  m_Name: Card 1
+  m_Name: Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,6 +101,12 @@ MonoBehaviour:
   parentsText: {fileID: 6463634460394097415}
   locationText: {fileID: 8530887211829499804}
   healthText: {fileID: 879401384495814613}
+  valueAge: 0
+  valueLocation: 0
+  valueHealth: 0
+  maleParent: 
+  femaleParent: 
+  cardTotalValue: 0
 --- !u!1 &879401384495814613
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,13 +177,13 @@ MonoBehaviour:
     m_FontSize: 14
     m_FontStyle: 1
     m_BestFit: 1
-    m_MinSize: 14
-    m_MaxSize: 20
+    m_MinSize: 4
+    m_MaxSize: 14
     m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Info
 --- !u!1 &1462403146837000024
@@ -250,13 +256,13 @@ MonoBehaviour:
     m_FontSize: 14
     m_FontStyle: 1
     m_BestFit: 1
-    m_MinSize: 14
-    m_MaxSize: 20
+    m_MinSize: 4
+    m_MaxSize: 14
     m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Info
 --- !u!1 &2315498114003778698
@@ -408,13 +414,13 @@ MonoBehaviour:
     m_FontSize: 14
     m_FontStyle: 1
     m_BestFit: 1
-    m_MinSize: 14
-    m_MaxSize: 20
+    m_MinSize: 4
+    m_MaxSize: 14
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 'Location:'
 --- !u!1 &4154811015806763376
@@ -566,13 +572,13 @@ MonoBehaviour:
     m_FontSize: 14
     m_FontStyle: 1
     m_BestFit: 1
-    m_MinSize: 14
-    m_MaxSize: 20
+    m_MinSize: 4
+    m_MaxSize: 14
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 'Parents:'
 --- !u!1 &5914805601835930803
@@ -717,13 +723,13 @@ MonoBehaviour:
     m_FontSize: 14
     m_FontStyle: 1
     m_BestFit: 1
-    m_MinSize: 14
-    m_MaxSize: 20
+    m_MinSize: 4
+    m_MaxSize: 14
     m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Info
 --- !u!1 &6474208093620536400
@@ -796,13 +802,13 @@ MonoBehaviour:
     m_FontSize: 14
     m_FontStyle: 1
     m_BestFit: 1
-    m_MinSize: 14
-    m_MaxSize: 20
+    m_MinSize: 4
+    m_MaxSize: 14
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 'Health:'
 --- !u!1 &8530887211829499804
@@ -875,12 +881,12 @@ MonoBehaviour:
     m_FontSize: 14
     m_FontStyle: 1
     m_BestFit: 1
-    m_MinSize: 14
-    m_MaxSize: 20
+    m_MinSize: 4
+    m_MaxSize: 14
     m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Info

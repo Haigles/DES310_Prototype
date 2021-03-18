@@ -99,10 +99,10 @@ MonoBehaviour:
   nameText: {fileID: 4154811015806763376}
   ageText: {fileID: 1462403146837000024}
   parentsText: {fileID: 6463634460394097415}
-  locationText: {fileID: 8530887211829499804}
+  distanceText: {fileID: 8530887211829499804}
   healthText: {fileID: 879401384495814613}
   valueAge: 0
-  valueLocation: 0
+  valueDistance: 0
   valueHealth: 0
   maleParent: 
   femaleParent: 

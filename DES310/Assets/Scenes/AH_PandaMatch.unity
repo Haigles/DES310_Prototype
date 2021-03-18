@@ -604,47 +604,135 @@ MonoBehaviour:
     cardPicture: {fileID: 2800000, guid: bfdaf2138f16d424daab0df0465191cd, type: 3}
     cardAge: 5
     cardParents: 
-    cardLocation: UK
+    cardDistance: UK
     cardHealth: Concussion Prone
     valueAge: 5
     maleParent: Jack
     femaleParent: Jill
-    valueLocation: 0
+    valueDistance: 0
+    valueHealth: 1
+  - cardName: Larry
+    cardPicture: {fileID: 2800000, guid: 14146595490881f43aee6d42c8b718fe, type: 3}
+    cardAge: 6
+    cardParents: 
+    cardDistance: UK
+    cardHealth: Bad Temper
+    valueAge: 6
+    maleParent: Lenny
+    femaleParent: Penny
+    valueDistance: 0
+    valueHealth: 1
+  - cardName: Greg
+    cardPicture: {fileID: 2800000, guid: bfdaf2138f16d424daab0df0465191cd, type: 3}
+    cardAge: 10
+    cardParents: 
+    cardDistance: UK
+    cardHealth: Only eats SteakBakes
+    valueAge: 10
+    maleParent: George
+    femaleParent: Georgia
+    valueDistance: 0
     valueHealth: 1
   pandaChoiceCards:
   - cardName: Terry
     cardPicture: {fileID: 2800000, guid: 14146595490881f43aee6d42c8b718fe, type: 3}
     cardAge: 7
     cardParents: 
-    cardLocation: China
+    cardDistance: 7932
     cardHealth: Low Lobido
     valueAge: 7
     maleParent: Jack
     femaleParent: Tilly
-    valueLocation: 3
+    valueDistance: 4
     valueHealth: 3
   - cardName: Perry
     cardPicture: {fileID: 2800000, guid: 4dedc5afd2286dc4f99515a8794548e8, type: 3}
     cardAge: 6
     cardParents: 
-    cardLocation: Fance
+    cardDistance: 2509
     cardHealth: Good Health
     valueAge: 6
     maleParent: Paul
     femaleParent: Paula
-    valueLocation: 1
+    valueDistance: 2
     valueHealth: 0
   - cardName: Kerry
     cardPicture: {fileID: 2800000, guid: c4bb011ee53021144ad47cb2ba560bf5, type: 3}
     cardAge: 5
     cardParents: 
-    cardLocation: Russia
+    cardDistance: 872
     cardHealth: Sprained Ankle
     valueAge: 5
     maleParent: Karl
     femaleParent: Karen
-    valueLocation: 2
+    valueDistance: 1
     valueHealth: 1
+  - cardName: Berry
+    cardPicture: {fileID: 2800000, guid: 4dedc5afd2286dc4f99515a8794548e8, type: 3}
+    cardAge: 7
+    cardParents: 
+    cardDistance: 1140
+    cardHealth: Overweight
+    valueAge: 7
+    maleParent: Lenny
+    femaleParent: Jill
+    valueDistance: 1
+    valueHealth: 2
+  - cardName: Merry
+    cardPicture: {fileID: 2800000, guid: 14146595490881f43aee6d42c8b718fe, type: 3}
+    cardAge: 4
+    cardParents: 
+    cardDistance: 8282
+    cardHealth: Performance Anxiety
+    valueAge: 4
+    maleParent: Jack
+    femaleParent: Penny
+    valueDistance: 3
+    valueHealth: 1
+  - cardName: Derry
+    cardPicture: {fileID: 2800000, guid: c4bb011ee53021144ad47cb2ba560bf5, type: 3}
+    cardAge: 5
+    cardParents: 
+    cardDistance: 534
+    cardHealth: Infertile
+    valueAge: 5
+    maleParent: Dab
+    femaleParent: Dot
+    valueDistance: 1
+    valueHealth: 10
+  - cardName: Peggy
+    cardPicture: {fileID: 2800000, guid: c4bb011ee53021144ad47cb2ba560bf5, type: 3}
+    cardAge: 8
+    cardParents: 
+    cardDistance: 10201
+    cardHealth: Promiscuous
+    valueAge: 8
+    maleParent: Lenny
+    femaleParent: Penny
+    valueDistance: 3
+    valueHealth: 0
+  - cardName: Oreo
+    cardPicture: {fileID: 2800000, guid: 4dedc5afd2286dc4f99515a8794548e8, type: 3}
+    cardAge: 9
+    cardParents: 
+    cardDistance: 5244
+    cardHealth: Lazy
+    valueAge: 9
+    maleParent: Biscuit
+    femaleParent: Cookie
+    valueDistance: 2
+    valueHealth: 1
+  - cardName: Jessy
+    cardPicture: {fileID: 2800000, guid: bfdaf2138f16d424daab0df0465191cd, type: 3}
+    cardAge: 10
+    cardParents: 
+    cardDistance: 16875
+    cardHealth: Good Health
+    valueAge: 10
+    maleParent: George
+    femaleParent: Jill
+    valueDistance: 4
+    valueHealth: 0
 --- !u!4 &1972406676
 Transform:
   m_ObjectHideFlags: 0

@@ -26,7 +26,7 @@ public class CardInfo
     [Header("Strings")]
     public string cardAge;
     public string cardParents;
-    public string cardLocation;
+    public string cardDistance;
     public string cardHealth;
 
     [Header("Values")]
@@ -35,7 +35,7 @@ public class CardInfo
     public string maleParent;
     public string femaleParent;
     [Range(0, 100)]
-    public int valueLocation;
+    public int valueDistance;
     [Range(0, 100)]
     public int valueHealth;
 }

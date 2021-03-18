@@ -5,8 +5,8 @@ using UnityEditor.UI;
 
 public class CardDetails : MonoBehaviour
 {
-    public GameObject cardPicture, nameText, ageText, parentsText, locationText, healthText;
-    public int valueAge, valueLocation, valueHealth;
+    public GameObject cardPicture, nameText, ageText, parentsText, distanceText, healthText;
+    public int valueAge, valueDistance, valueHealth;
     public string maleParent, femaleParent;
     public int cardTotalValue = 0;
 

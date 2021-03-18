@@ -32,6 +32,7 @@ public class Matching : MonoBehaviour
             CalculateBestMatch(currentChoices);
             currentChoices.Sort(SortByValue);
         }
+
         if (manager.state == MatchState.matching)
         {
             CheckMatch();
@@ -48,8 +49,8 @@ public class Matching : MonoBehaviour
 
             CardDetails choiceDetails = choices[i].GetComponent<CardDetails>();
 
-            int totalAgeValue = matchDetails.valueAge + choiceDetails.valueAge;
-            int totalLocationValue = matchDetails.valueLocation + choiceDetails.valueLocation;
+            int totalAgeValue = Mathf.Abs(matchDetails.valueAge - choiceDetails.valueAge);
+            int totalLocationValue = choiceDetails.valueDistance;
             int totalHealthValue = matchDetails.valueHealth + choiceDetails.valueHealth;
             int totalParentValue = 0;
 
@@ -84,20 +85,46 @@ public class Matching : MonoBehaviour
             {
                 if (GameObject.ReferenceEquals(canvas.clickResults[i].gameObject, currentChoices[0]))
                 {
-                    matchIndicator.color = new Color32(0, 128, 0, 255);
-                    manager.state = MatchState.recap;
+                    matchIndicator.color = new Color32(0, 128, 0, 255); 
                 }
                 else if (GameObject.ReferenceEquals(canvas.clickResults[i].gameObject, currentChoices[1]))
                 {
                     matchIndicator.color = new Color32(255, 255, 0, 255);
-                    manager.state = MatchState.recap;
                 }
                 else if (GameObject.ReferenceEquals(canvas.clickResults[i].gameObject, currentChoices[2]))
                 {
                     matchIndicator.color = new Color32(255, 0, 0, 255);
-                    manager.state = MatchState.recap;
                 }
+
+                DrawNewCards();
             }
+        }
+    }
+
+    private void DrawNewCards()
+    {
+        for (int i = 0; i < currentChoices.Count; i++)
+        {
+            Destroy(currentChoices[i]);
+        }
+
+        Destroy(currentMatchCard);
+        canvas.clickResults.Clear();
+
+        if (matchSetUp.choiceCards.Count > 0 || matchSetUp.matchCards.Count > 0)
+        {
+            matchSetUp.choiceCards.RemoveRange(0, 3);
+            matchSetUp.choices.Clear();
+            matchSetUp.Shuffle(matchSetUp.choiceCards);
+
+            matchSetUp.matchCards.RemoveAt(0);
+            matchSetUp.Shuffle(matchSetUp.matchCards);
+
+            manager.state = MatchState.setUp;
+        }
+        else
+        {
+            manager.state = MatchState.recap;
         }
     }
 }

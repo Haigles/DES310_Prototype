@@ -7,6 +7,7 @@ public enum MatchState
     setUp,
     calculate,
     matching,
+    reset,
     recap
 }
 public class GameManager : MonoBehaviour

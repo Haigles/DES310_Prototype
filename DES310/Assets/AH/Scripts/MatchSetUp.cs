@@ -20,7 +20,7 @@ public class MatchSetUp : MonoBehaviour
     public List<CardInfo> matchCards = new List<CardInfo>();
     public List<CardInfo> choiceCards = new List<CardInfo>();
 
-    //[HideInInspector]
+    [HideInInspector]
     public GameObject matchCard;
     [HideInInspector]
     public List<GameObject> choices = new List<GameObject>();
@@ -48,42 +48,48 @@ public class MatchSetUp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            SetUp();
+            if (manager.state == MatchState.setUp)
+            {
+                if (choiceCards.Count > 0 || matchCards.Count > 0)
+                {
+                    SetUp();
+                }
+                else
+                {
+                    manager.state = MatchState.recap;
+                }
+            }
         }
     }
 
     private void SetUp()
     {
-        if (manager.state == MatchState.setUp)
+        matchCard = Instantiate(cardPrefab, matchPosition.position, Quaternion.identity);
+        CardDetails matchCardDetails = matchCard.GetComponent<CardDetails>();
+
+        matchCard.transform.parent = matchPosition;
+        matchCard.transform.localPosition = new Vector2(0, 0);
+
+        AddCardDetails(matchCardDetails, 1, matchCards, "MatchCard");
+
+        for (int i = 0; i < choicePositions.Count; i++)
         {
-            matchCard = Instantiate(cardPrefab, matchPosition.position, Quaternion.identity);
-            CardDetails matchCardDetails = matchCard.GetComponent<CardDetails>();
+            choices.Add(Instantiate(cardPrefab, choicePositions[i].position, Quaternion.identity));
+            CardDetails choiceCardDetails = choices[i].GetComponent<CardDetails>();
 
-            matchCard.transform.parent = matchPosition;
-            matchCard.transform.localPosition = new Vector2(0, 0);
+            choices[i].transform.parent = choicePositions[i];
+            choices[i].transform.localPosition = new Vector2(0, 0);
 
-            AddCardDetails(matchCardDetails, 1, matchCards, "MatchCard");
-
-
-            for (int i = 0; i < choicePositions.Count; i++)
-            {
-                choices.Add(Instantiate(cardPrefab, choicePositions[i].position, Quaternion.identity));
-                CardDetails choiceCardDetails = choices[i].GetComponent<CardDetails>();
-
-                choices[i].transform.parent = choicePositions[i];
-                choices[i].transform.localPosition = new Vector2(0, 0);
-
-                AddCardDetails(choiceCardDetails, choices.Count, choiceCards, "ChoiceCard");
-            }
-
-
-            manager.state = MatchState.calculate;
+            AddCardDetails(choiceCardDetails, choices.Count, choiceCards, "ChoiceCard");
         }
+
+        manager.state = MatchState.calculate;
+
     }
 
-    private void Shuffle(List<CardInfo> list)
+    public void Shuffle(List<CardInfo> list)
     {
         for (int i = 0; i < list.Count; i++)
         {
@@ -94,22 +100,48 @@ public class MatchSetUp : MonoBehaviour
         }
     }
 
+    private void ClearCards()
+    {
+        if (choiceCards.Count >= 0 || matchCards.Count >= 0)
+        {
+            choiceCards.RemoveRange(1, 3);
+            choices.Clear();
+            Shuffle(choiceCards);
+
+            matchCards.RemoveAt(0);
+            Shuffle(matchCards);
+
+            manager.state = MatchState.setUp;
+        }
+        else
+        {
+            manager.state = MatchState.recap;
+        }
+    }
+
     private void AddCardDetails(CardDetails details, int list, List<CardInfo> cards, string tag)
     {
         for (int i = 0; i < list; i++)
         {
+            details.transform.tag = tag;
             details.nameText.GetComponent<Text>().text = cards[i].cardName;
             details.cardPicture.GetComponent<RawImage>().texture = cards[i].cardPicture;
             details.ageText.GetComponent<Text>().text = cards[i].cardAge;
             details.parentsText.GetComponent<Text>().text = cards[i].maleParent + " & " + cards[i].femaleParent;
-            details.locationText.GetComponent<Text>().text = cards[i].cardLocation;
+            if (details.transform.tag == "ChoiceCard")
+            {
+                details.distanceText.GetComponent<Text>().text = cards[i].cardDistance + "km";
+            }
+            else
+            {
+                details.distanceText.GetComponent<Text>().text = cards[i].cardDistance;
+            }
             details.healthText.GetComponent<Text>().text = cards[i].cardHealth;
             details.valueAge = cards[i].valueAge;
             details.maleParent = cards[i].maleParent;
             details.femaleParent = cards[i].femaleParent;
-            details.valueLocation = cards[i].valueLocation;
+            details.valueDistance = cards[i].valueDistance;
             details.valueHealth = cards[i].valueHealth;
-            details.transform.tag = tag;
         }
     }
 }

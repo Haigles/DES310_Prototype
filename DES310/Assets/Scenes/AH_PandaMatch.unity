@@ -633,6 +633,17 @@ MonoBehaviour:
     femaleParent: Georgia
     valueDistance: 0
     valueHealth: 1
+  - cardName: John
+    cardPicture: {fileID: 2800000, guid: bfdaf2138f16d424daab0df0465191cd, type: 3}
+    cardAge: 4
+    cardParents: 
+    cardDistance: China
+    cardHealth: Shy
+    valueAge: 4
+    maleParent: Bob
+    femaleParent: Bobbina
+    valueDistance: 0
+    valueHealth: 1
   pandaChoiceCards:
   - cardName: Terry
     cardPicture: {fileID: 2800000, guid: 14146595490881f43aee6d42c8b718fe, type: 3}
@@ -732,6 +743,39 @@ MonoBehaviour:
     maleParent: George
     femaleParent: Jill
     valueDistance: 4
+    valueHealth: 0
+  - cardName: Becky
+    cardPicture: {fileID: 2800000, guid: c4bb011ee53021144ad47cb2ba560bf5, type: 3}
+    cardAge: 5
+    cardParents: 
+    cardDistance: 5000
+    cardHealth: Good Health
+    valueAge: 5
+    maleParent: Gary
+    femaleParent: Jackie
+    valueDistance: 5
+    valueHealth: 0
+  - cardName: Geneva
+    cardPicture: {fileID: 2800000, guid: 14146595490881f43aee6d42c8b718fe, type: 3}
+    cardAge: 6
+    cardParents: 
+    cardDistance: 7500
+    cardHealth: Hates Puffafish
+    valueAge: 6
+    maleParent: Dennis
+    femaleParent: Hayley
+    valueDistance: 2
+    valueHealth: 10
+  - cardName: Emily
+    cardPicture: {fileID: 2800000, guid: bfdaf2138f16d424daab0df0465191cd, type: 3}
+    cardAge: 5
+    cardParents: 
+    cardDistance: 2500
+    cardHealth: Good Health
+    valueAge: 5
+    maleParent: Jack
+    femaleParent: Izzy
+    valueDistance: 3
     valueHealth: 0
 --- !u!4 &1972406676
 Transform:

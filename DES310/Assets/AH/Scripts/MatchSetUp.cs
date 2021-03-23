@@ -26,11 +26,16 @@ public class MatchSetUp : MonoBehaviour
     public List<GameObject> choices = new List<GameObject>();
 
     private GameManager manager;
+    private GameObject mainCamera;
+    public GameObject enclosureCameraUI;
 
     // Start is called before the first frame update
     void Start()
     {
         manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+
+        enclosureCameraUI.SetActive(false);
 
         for (int i = 0; i < cardPool.pandaMatchCards.Length; i++)
         {
@@ -59,6 +64,7 @@ public class MatchSetUp : MonoBehaviour
                 else
                 {
                     manager.state = MatchState.recap;
+                    enclosureCameraUI.SetActive(false);
                 }
             }
         }
@@ -68,6 +74,10 @@ public class MatchSetUp : MonoBehaviour
     {
         matchCard = Instantiate(cardPrefab, matchPosition.position, Quaternion.identity);
         CardDetails matchCardDetails = matchCard.GetComponent<CardDetails>();
+
+        mainCamera.transform.position = new Vector2(50, 0);
+
+        enclosureCameraUI.SetActive(true);
 
         matchCard.transform.parent = matchPosition;
         matchCard.transform.localPosition = new Vector2(0, 0);

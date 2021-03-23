@@ -6,19 +6,33 @@ using UnityEngine.UI;
 
 public class Matching : MonoBehaviour
 {
-    public RawImage matchIndicator;
+    public Text textTimer;
+    public float timer;
+    private bool timerIsRunning;
+    public Text scoreText;
+    public Text stageIndicator;
     public MatchSetUp matchSetUp;
     public int parentPenalty;
     private GameManager manager;
     private CheckClicks canvas;
     public GameObject currentMatchCard;
     public List<GameObject> currentChoices;
+    private int score;
+
+    [SerializeField]
+    int bestMatchScore, middleMatchScore, worstMatchScore;
+
+    [SerializeField]
+    List<int> stageScoreThreshold;
 
     // Start is called before the first frame update
     void Start()
     {
         manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         canvas = GameObject.FindGameObjectWithTag("Canvas").GetComponent<CheckClicks>();
+        scoreText.enabled = false;
+        textTimer.enabled = false;
+        timerIsRunning = false;
     }
 
     // Update is called once per frame
@@ -36,6 +50,9 @@ public class Matching : MonoBehaviour
         if (manager.state == MatchState.matching)
         {
             CheckMatch();
+
+            timerIsRunning = true;
+            Timer();
         }
     }
 
@@ -79,21 +96,23 @@ public class Matching : MonoBehaviour
 
     private void CheckMatch()
     {
+        scoreText.enabled = true;
+
         for (int i = 0; i < canvas.clickResults.Count; i++)
         {
             if (canvas.clickResults[i].gameObject.transform.tag == "ChoiceCard")
             {
                 if (GameObject.ReferenceEquals(canvas.clickResults[i].gameObject, currentChoices[0]))
                 {
-                    matchIndicator.color = new Color32(0, 128, 0, 255); 
+                    CalculateScore(bestMatchScore);
                 }
                 else if (GameObject.ReferenceEquals(canvas.clickResults[i].gameObject, currentChoices[1]))
                 {
-                    matchIndicator.color = new Color32(255, 255, 0, 255);
+                    CalculateScore(middleMatchScore);
                 }
                 else if (GameObject.ReferenceEquals(canvas.clickResults[i].gameObject, currentChoices[2]))
                 {
-                    matchIndicator.color = new Color32(255, 0, 0, 255);
+                    CalculateScore(worstMatchScore);
                 }
 
                 DrawNewCards();
@@ -124,8 +143,55 @@ public class Matching : MonoBehaviour
         }
         else
         {
+            scoreText.enabled = false;
             manager.state = MatchState.recap;
         }
+    }
+
+    private void CalculateScore(int scoreUpdate)
+    {
+        int stageCounter = 1;
+
+        score += scoreUpdate;
+        scoreText.text = "Score: " + score;
+
+        for (int i = 0; i < stageScoreThreshold.Count; i++)
+        {
+            if (score >= stageScoreThreshold[i])
+            {
+                stageCounter++;
+                stageIndicator.text = "Stage " + stageCounter;
+            }
+        }
+    }
+
+    private void Timer()
+    {
+        DisplayTimer(timer);
+
+        if (timerIsRunning)
+        {
+            if (timer > 0)
+            {
+                timer -= Time.deltaTime;
+            }
+            else
+            {
+                timer = 0;
+                manager.state = MatchState.recap;
+                timerIsRunning = false;
+            }
+        }
+    }
+
+    private void DisplayTimer(float timeToDisplay)
+    {
+        textTimer.enabled = true;
+
+        float minutes = Mathf.FloorToInt(timeToDisplay / 60);
+        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
+
+        textTimer.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 }
 

@@ -9,6 +9,7 @@ TagManager:
   - MatchCard
   - ChoiceCard
   - Canvas
+  - EnclosureCamera
   layers:
   - Default
   - TransparentFX

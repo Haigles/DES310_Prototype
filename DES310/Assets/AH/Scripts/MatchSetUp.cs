@@ -27,7 +27,11 @@ public class MatchSetUp : MonoBehaviour
 
     private GameManager manager;
     private GameObject mainCamera;
+    private bool addedCards = false;
+
     public GameObject enclosureCameraUI;
+    public AnimalSelection animalSelection;
+    public Text animalIndicator;
 
     // Start is called before the first frame update
     void Start()
@@ -36,36 +40,43 @@ public class MatchSetUp : MonoBehaviour
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 
         enclosureCameraUI.SetActive(false);
-
-        for (int i = 0; i < cardPool.pandaMatchCards.Length; i++)
-        {
-            matchCards.Add(cardPool.pandaMatchCards[i]);
-        }
-        Shuffle(matchCards);
-
-        for (int i = 0; i < cardPool.pandaChoiceCards.Length; i++)
-        {
-            choiceCards.Add(cardPool.pandaChoiceCards[i]);
-        }
-        Shuffle(choiceCards);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (manager.state == MatchState.setUp)
         {
-            if (manager.state == MatchState.setUp)
+            if (!addedCards)
             {
-                if (choiceCards.Count > 0 || matchCards.Count > 0)
+                if (animalSelection.animals[0])
                 {
-                    SetUp();
+                    AnimalChoice(cardPool.pandaMatchCards, cardPool.pandaChoiceCards, "Panda");
                 }
-                else
+                if (animalSelection.animals[1])
                 {
-                    manager.state = MatchState.recap;
-                    enclosureCameraUI.SetActive(false);
+                    AnimalChoice(cardPool.penguinMatchCards, cardPool.penguinChoiceCards, "Penguin");
                 }
+                if (animalSelection.animals[2])
+                {
+                    AnimalChoice(cardPool.giraffeMatchCards, cardPool.giraffeChoiceCards, "Giraffe");
+                }
+                if (animalSelection.animals[3])
+                {
+                    AnimalChoice(cardPool.lionMatchCards, cardPool.lionChoiceCards, "Lion");
+                }
+
+                addedCards = true;
+            }
+
+            if (choiceCards.Count > 0 || matchCards.Count > 0)
+            {
+                SetUp();
+            }
+            else
+            {
+                manager.state = MatchState.recap;
+                //enclosureCameraUI.SetActive(false);
             }
         }
     }
@@ -138,6 +149,7 @@ public class MatchSetUp : MonoBehaviour
             details.cardPicture.GetComponent<RawImage>().texture = cards[i].cardPicture;
             details.ageText.GetComponent<Text>().text = cards[i].cardAge;
             details.parentsText.GetComponent<Text>().text = cards[i].maleParent + " & " + cards[i].femaleParent;
+
             if (details.transform.tag == "ChoiceCard")
             {
                 details.distanceText.GetComponent<Text>().text = cards[i].cardDistance + "km";
@@ -146,6 +158,7 @@ public class MatchSetUp : MonoBehaviour
             {
                 details.distanceText.GetComponent<Text>().text = cards[i].cardDistance;
             }
+
             details.healthText.GetComponent<Text>().text = cards[i].cardHealth;
             details.valueAge = cards[i].valueAge;
             details.maleParent = cards[i].maleParent;
@@ -153,5 +166,22 @@ public class MatchSetUp : MonoBehaviour
             details.valueDistance = cards[i].valueDistance;
             details.valueHealth = cards[i].valueHealth;
         }
+    }
+
+    public void AnimalChoice(CardInfo[] animalMatchCards, CardInfo[] animalChoiceCards, string animalName)
+    {
+        for (int i = 0; i < animalMatchCards.Length; i++)
+        {
+            matchCards.Add(animalMatchCards[i]);
+        }
+        Shuffle(matchCards);
+
+        for (int i = 0; i < animalChoiceCards.Length; i++)
+        {
+            choiceCards.Add(animalChoiceCards[i]);
+        }
+        Shuffle(choiceCards);
+
+        animalIndicator.text = animalName;
     }
 }

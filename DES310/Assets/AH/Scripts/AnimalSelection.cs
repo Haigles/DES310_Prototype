@@ -9,6 +9,8 @@ public class AnimalSelection : MonoBehaviour
     GameManager manager;
     public GameObject animalSelectionMenu;
 
+    public SelectEnclosure selectedEnclosure;
+
     [SerializeField]
     public List<bool> animals;
 
@@ -21,7 +23,7 @@ public class AnimalSelection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void SelectAnimal(int animalIndex)
@@ -33,7 +35,15 @@ public class AnimalSelection : MonoBehaviour
 
         animals[animalIndex] = true;
 
+        selectedEnclosure.canPick = false;
         manager.state = MatchState.setUp;
         animalSelectionMenu.SetActive(false);
+    }
+
+    public void CloseMenu()
+    {
+        manager.state = MatchState.hub;
+        animalSelectionMenu.SetActive(false);
+        selectedEnclosure = null;
     }
 }

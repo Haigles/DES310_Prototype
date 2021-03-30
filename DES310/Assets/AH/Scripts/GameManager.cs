@@ -9,8 +9,8 @@ public enum MatchState
     setUp,
     calculate,
     matching,
-    reset,
-    recap
+    recap,
+    reset
 }
 public class GameManager : MonoBehaviour
 {

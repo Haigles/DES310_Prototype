@@ -6,18 +6,26 @@ using UnityEngine.UI;
 
 public class Matching : MonoBehaviour
 {
+    [Header("Timer Variables")]
+    public bool activateTimer = false;
+    public GameObject timerUI;
     public Text textTimer;
-    public float timer;
+    public float assignTimer = 0;
+    [HideInInspector]
+    public float timer = 0;
     private bool timerIsRunning;
+    [Space(25)]
+
     public Text scoreText;
     public Text stageIndicator;
-    public MatchSetUp matchSetUp;
+    private MatchSetUp matchSetUp;
     public int parentPenalty;
     private GameManager manager;
     private CheckClicks canvas;
+    private Recap recap;
     public GameObject currentMatchCard;
     public List<GameObject> currentChoices;
-    private int score;
+    public int score;
 
     [SerializeField]
     int bestMatchScore, middleMatchScore, worstMatchScore;
@@ -29,9 +37,14 @@ public class Matching : MonoBehaviour
     void Start()
     {
         manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        recap = GameObject.FindGameObjectWithTag("GameManager").GetComponent<Recap>();
+        matchSetUp = GameObject.FindGameObjectWithTag("GameManager").GetComponent<MatchSetUp>();
+
         canvas = GameObject.FindGameObjectWithTag("Canvas").GetComponent<CheckClicks>();
+
+        timer = assignTimer;
+
         scoreText.enabled = false;
-        textTimer.enabled = false;
         timerIsRunning = false;
     }
 
@@ -53,6 +66,10 @@ public class Matching : MonoBehaviour
 
             timerIsRunning = true;
             Timer();
+        }
+        else
+        {
+            timerUI.SetActive(false);
         }
     }
 
@@ -104,14 +121,17 @@ public class Matching : MonoBehaviour
             {
                 if (GameObject.ReferenceEquals(canvas.clickResults[i].gameObject, currentChoices[0]))
                 {
-                    CalculateScore(bestMatchScore);
+                    AddCardToRecap(currentMatchCard, currentChoices[0]);
+                    CalculateScore(bestMatchScore); 
                 }
                 else if (GameObject.ReferenceEquals(canvas.clickResults[i].gameObject, currentChoices[1]))
                 {
+                    AddCardToRecap(currentMatchCard, currentChoices[1]);
                     CalculateScore(middleMatchScore);
                 }
                 else if (GameObject.ReferenceEquals(canvas.clickResults[i].gameObject, currentChoices[2]))
                 {
+                    AddCardToRecap(currentMatchCard, currentChoices[2]);
                     CalculateScore(worstMatchScore);
                 }
 
@@ -141,11 +161,6 @@ public class Matching : MonoBehaviour
 
             manager.state = MatchState.setUp;
         }
-        else
-        {
-            scoreText.enabled = false;
-            manager.state = MatchState.recap;
-        }
     }
 
     private void CalculateScore(int scoreUpdate)
@@ -153,7 +168,10 @@ public class Matching : MonoBehaviour
         int stageCounter = 1;
 
         score += scoreUpdate;
+        recap.compatability.Add(scoreUpdate);
+
         scoreText.text = "Score: " + score;
+        recap.recapScore.text = "" + score;
 
         for (int i = 0; i < stageScoreThreshold.Count; i++)
         {
@@ -161,8 +179,21 @@ public class Matching : MonoBehaviour
             {
                 stageCounter++;
                 stageIndicator.text = "Stage " + stageCounter;
+                recap.stageIndicator.text = "Stage " + stageCounter;
             }
         }
+    }
+
+    private void AddCardToRecap(GameObject matchCard, GameObject choiceCard)
+    {
+        GameObject duplicateMatchCard = Instantiate(matchCard, recap.matchPosition.position, Quaternion.identity);
+        GameObject duplicateChoiceCard = Instantiate(choiceCard, recap.choicePosition.position, Quaternion.identity);
+
+        duplicateMatchCard.transform.parent = recap.matchPosition;
+        duplicateChoiceCard.transform.parent = recap.choicePosition;
+
+        recap.matchCards.Add(duplicateMatchCard);
+        recap.choiceCards.Add(duplicateChoiceCard);
     }
 
     private void Timer()
@@ -173,11 +204,15 @@ public class Matching : MonoBehaviour
         {
             if (timer > 0)
             {
-                timer -= Time.deltaTime;
+                if (activateTimer)
+                {
+                    timer -= Time.deltaTime;
+                }
             }
             else
             {
                 timer = 0;
+                //Debug.Log("RECAP FROM TIMER");
                 manager.state = MatchState.recap;
                 timerIsRunning = false;
             }
@@ -186,7 +221,7 @@ public class Matching : MonoBehaviour
 
     private void DisplayTimer(float timeToDisplay)
     {
-        textTimer.enabled = true;
+        timerUI.SetActive(true);
 
         float minutes = Mathf.FloorToInt(timeToDisplay / 60);
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);

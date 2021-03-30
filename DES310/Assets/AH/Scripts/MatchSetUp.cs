@@ -27,7 +27,7 @@ public class MatchSetUp : MonoBehaviour
 
     private GameManager manager;
     private GameObject mainCamera;
-    private bool addedCards = false;
+    public bool addedCards = false;
 
     public GameObject enclosureCameraUI;
     public AnimalSelection animalSelection;
@@ -53,14 +53,17 @@ public class MatchSetUp : MonoBehaviour
                 {
                     AnimalChoice(cardPool.pandaMatchCards, cardPool.pandaChoiceCards, "Panda");
                 }
+                else
                 if (animalSelection.animals[1])
                 {
                     AnimalChoice(cardPool.penguinMatchCards, cardPool.penguinChoiceCards, "Penguin");
                 }
+                else
                 if (animalSelection.animals[2])
                 {
                     AnimalChoice(cardPool.giraffeMatchCards, cardPool.giraffeChoiceCards, "Giraffe");
                 }
+                else
                 if (animalSelection.animals[3])
                 {
                     AnimalChoice(cardPool.lionMatchCards, cardPool.lionChoiceCards, "Lion");
@@ -75,6 +78,7 @@ public class MatchSetUp : MonoBehaviour
             }
             else
             {
+                //Debug.Log("RECAP FROM NO CARDS - MSU UPDATE");
                 manager.state = MatchState.recap;
                 //enclosureCameraUI.SetActive(false);
             }
@@ -86,7 +90,7 @@ public class MatchSetUp : MonoBehaviour
         matchCard = Instantiate(cardPrefab, matchPosition.position, Quaternion.identity);
         CardDetails matchCardDetails = matchCard.GetComponent<CardDetails>();
 
-        mainCamera.transform.position = new Vector2(50, 0);
+        mainCamera.transform.position = new Vector3(50, 0, -10);
 
         enclosureCameraUI.SetActive(true);
 
@@ -121,24 +125,24 @@ public class MatchSetUp : MonoBehaviour
         }
     }
 
-    private void ClearCards()
-    {
-        if (choiceCards.Count >= 0 || matchCards.Count >= 0)
-        {
-            choiceCards.RemoveRange(1, 3);
-            choices.Clear();
-            Shuffle(choiceCards);
+    //private void ClearCards()
+    //{
+    //    if (choiceCards.Count >= 0 || matchCards.Count >= 0)
+    //    {
+    //        choiceCards.RemoveRange(1, 3);
+    //        choices.Clear();
+    //        Shuffle(choiceCards);
 
-            matchCards.RemoveAt(0);
-            Shuffle(matchCards);
+    //        matchCards.RemoveAt(0);
+    //        Shuffle(matchCards);
 
-            manager.state = MatchState.setUp;
-        }
-        else
-        {
-            manager.state = MatchState.recap;
-        }
-    }
+    //        manager.state = MatchState.setUp;
+    //    }
+    //    else
+    //    {
+    //        manager.state = MatchState.recap;
+    //    }
+    //}
 
     private void AddCardDetails(CardDetails details, int list, List<CardInfo> cards, string tag)
     {

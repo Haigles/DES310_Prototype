@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum MatchState
+public enum MatchState //All Game States (AH)
 {
     hub,
     selection,
@@ -12,17 +12,7 @@ public enum MatchState
     recap,
     reset
 }
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour //Controls which state the game is in (AH)
 {
     public MatchState state;
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

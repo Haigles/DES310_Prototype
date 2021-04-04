@@ -20,30 +20,24 @@ public class AnimalSelection : MonoBehaviour
         manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void SelectAnimal(int animalIndex)
     {
         for (int i = 0; i < animals.Count; i++)
         {
-            animals[i] = false;
+            animals[i] = false; //Sets all animals to false to begin with (AH)
         }
 
-        animals[animalIndex] = true;
+        animals[animalIndex] = true; //Chooses which animal is being matched, based on which button is pressed (AH)
 
         selectedEnclosure.canPick = false;
-        manager.state = MatchState.setUp;
-        animalSelectionMenu.SetActive(false);
+        manager.state = MatchState.setUp; //Chamges game manager state to 'SetUp' (AH)
+        animalSelectionMenu.SetActive(false); //Hide selection menu (AH);
     }
 
     public void CloseMenu()
     {
-        manager.state = MatchState.hub;
-        animalSelectionMenu.SetActive(false);
-        selectedEnclosure = null;
+        manager.state = MatchState.hub; //Chamges game manager state to 'Hub' (AH)
+        animalSelectionMenu.SetActive(false); //Hide selection menu (AH);
+        selectedEnclosure = null; //Clears selected enclosure (AH)
     }
 }

@@ -4,20 +4,8 @@ using UnityEngine;
 
 public class CardDetails : MonoBehaviour
 {
-    public GameObject cardPicture, nameText, ageText, parentsText, distanceText, healthText;
-    public int valueAge, valueDistance, valueHealth;
-    public string maleParent, femaleParent;
-    public int cardTotalValue = 0;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public GameObject cardPicture, nameText, ageText, parentsText, distanceText, healthText; //Card Text Fields (Children of Prefab) (AH)
+    public int valueAge, valueDistance, valueHealth; //Values of details (AH)
+    public string maleParent, femaleParent; //Names of the card's parents (AH)
+    public int cardTotalValue = 0; //Value used to calculate matches (AH)
 }

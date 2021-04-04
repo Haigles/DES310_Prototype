@@ -7,25 +7,40 @@ using TMPro;
 
 public class Recap : MonoBehaviour
 {
+    [Header("Animal Selection")]
+    public AnimalSelection animalSelection;
+
+    [Header("UI GameObjects")]
+    [Space(10)]
     public GameObject recapScreen;
     public GameObject backButton;
     public GameObject nextButton;
+
+    [Header("UI Text Elements")]
+    [Space(10)]
     public TMP_Text textPercentNumber;
     public Text recapScore;
     public Text stageIndicator;
+
+    [Header("Card Positions")]
+    [Space(10)]
     public Transform matchPosition;
     public Transform choicePosition;
+      
     private int checkMatchInt = 0;
-
     private GameManager manager;
     private GameObject mainCamera;
     private MatchSetUp matchSetUp;
     private Matching matching;
-    public AnimalSelection animalSelection;
+    
 
+    [Header("Hide These UI Elements")]
+    [Space(10)]
     [SerializeField]
     List<GameObject> hideUI;
 
+    [Header("Updates from Matching")]
+    [Space(10)]
     public List<GameObject> matchCards = new List<GameObject>();
     public List<GameObject> choiceCards = new List<GameObject>();
     public List<int> compatability = new List<int>();
@@ -43,20 +58,20 @@ public class Recap : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (manager.state == MatchState.recap)
+        if (manager.state == MatchState.recap) //If game manager state is on 'Recap' (AH)
         {
-            recapScreen.SetActive(true);
-            HideUIElements();
-            ShowMatches();
+            recapScreen.SetActive(true); //Show Recap Screen (AH)
+            HideUIElements(); //Hide other certain UI elements (AH)
+            ShowMatches(); //Show matches made (AH)
         }
         else
         {
-            recapScreen.SetActive(false);
+            recapScreen.SetActive(false); //Hide Recap Screen (AH)
         }
 
-        if (manager.state == MatchState.reset)
+        if (manager.state == MatchState.reset) //If game manager state is on 'Reset' (AH)
         {
-            ResetMatching();
+            ResetMatching(); //reset matching (AH)
         }
     }
 
@@ -64,25 +79,25 @@ public class Recap : MonoBehaviour
     {
         for (int i = 0; i < hideUI.Count; i++)
         {
-            hideUI[i].SetActive(false);
+            hideUI[i].SetActive(false); //For each element in 'hideUI' hide them (AH)
         }
 
-        if (checkMatchInt == 0)
+        if (checkMatchInt == 0) 
         {
-            backButton.SetActive(false);
+            backButton.SetActive(false); //DO NOT show back button if you can not go further back in matches (AH)
         }
         else
         {
-            backButton.SetActive(true);
+            backButton.SetActive(true); //show back button (AH)
         }
 
         if (checkMatchInt == matchCards.Count - 1)
         {
-            nextButton.SetActive(false);
+            nextButton.SetActive(false); //DO NOT show next button if you can not go further forward in matches (AH)
         }
         else
         {
-            nextButton.SetActive(true);
+            nextButton.SetActive(true); //show next button (AH)
         }
     }
 
@@ -90,54 +105,57 @@ public class Recap : MonoBehaviour
     {
         for (int i = 0; i < matchCards.Count; i++)
         {
-            if (i == checkMatchInt)
+            if (i == checkMatchInt) //Show match card and choice card that appears in the list at the 'checkMatchInt' (AH)
             {
                 matchCards[checkMatchInt].SetActive(true);
                 choiceCards[checkMatchInt].SetActive(true);
             }
-            else
+            else //hide all other match and choice cards (AH)
             {
                 matchCards[i].SetActive(false);
                 choiceCards[i].SetActive(false);
             }
 
-            textPercentNumber.text = "" + compatability[checkMatchInt];
+            textPercentNumber.text = "" + compatability[checkMatchInt]; //Update compatability based on the 'checkMatchInt' (AH)
         }
     }
 
     private void ResetMatching()
     {
-        mainCamera.transform.position = new Vector3(0, 0, -10);
+        mainCamera.transform.position = new Vector3(0, 0, -10); //Main camera goes back to the hub screen (AH)
 
         if (matchCards != null)
         {
             for (int i = 0; i < matchCards.Count; i++)
             {
                 Destroy(choiceCards[i].gameObject);
-                Destroy(matchCards[i].gameObject);
-            }
+                Destroy(matchCards[i].gameObject); //Destroy all cards (AH)
+            } 
 
             compatability.Clear();
             choiceCards.Clear();
-            matchCards.Clear();
+            matchCards.Clear(); //Clear all lists (AH)
         }
 
         animalSelection.selectedEnclosure.animalIndicator.text = matchSetUp.animalIndicator.text;
-        animalSelection.selectedEnclosure.stageIndicator.text = stageIndicator.text;
-        checkMatchInt = 0;
+        animalSelection.selectedEnclosure.stageIndicator.text = stageIndicator.text; //Update completed enclosure with the results (AH)
+
+        checkMatchInt = 0; 
         matchSetUp.addedCards = false;
         matching.timer = matching.assignTimer;
         matching.score = 0;
         matching.scoreText.text = "Score: " + matching.score;
         matching.stageIndicator.text = "Stage 1";
-        manager.state = MatchState.hub;
+        //reset  all variables(AH)
+
+        manager.state = MatchState.hub; //Changes game manager state to 'Hub' (AH)
     }
 
     public void NextButton()
     {
         if (checkMatchInt < matchCards.Count - 1)
         {
-            checkMatchInt++;
+            checkMatchInt++; //increase checkMatchInt variable by 1 (AH)
         }
     }
 
@@ -145,12 +163,12 @@ public class Recap : MonoBehaviour
     {
         if (checkMatchInt > 0)
         {
-            checkMatchInt--;
+            checkMatchInt--; //decrease checkMatchInt variable by 1 (AH)
         }
     }
 
     public void HomeButton()
     {
-        manager.state = MatchState.reset;
+        manager.state = MatchState.reset; //Change game manager state to 'Reset' (AH)
     }
 }

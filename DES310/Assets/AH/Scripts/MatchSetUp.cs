@@ -5,17 +5,17 @@ using UnityEngine.UI;
 
 public class MatchSetUp : MonoBehaviour
 {
-    [Space(5)]
     [Header("Card Positions")]
     public Transform matchPosition;
     [SerializeField]
     public List<Transform> choicePositions = new List<Transform>();
 
-    [Space(5)]
     [Header("Card Prefab")]
     [Space(10)]
     public GameObject cardPrefab;
 
+    [Header("Card Pool")]
+    [Space(10)]
     public CardPool cardPool;
     public List<CardInfo> matchCards = new List<CardInfo>();
     public List<CardInfo> choiceCards = new List<CardInfo>();
@@ -24,11 +24,14 @@ public class MatchSetUp : MonoBehaviour
     public GameObject matchCard;
     [HideInInspector]
     public List<GameObject> choices = new List<GameObject>();
+    [HideInInspector]
+    public bool addedCards = false;
 
     private GameManager manager;
     private GameObject mainCamera;
-    public bool addedCards = false;
 
+    [Header("UI Elements")]
+    [Space(10)]
     public GameObject enclosureCameraUI;
     public AnimalSelection animalSelection;
     public Text animalIndicator;
@@ -45,10 +48,11 @@ public class MatchSetUp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (manager.state == MatchState.setUp)
+        if (manager.state == MatchState.setUp)//If game manager state is on 'SetUp' (AH)
         {
-            if (!addedCards)
+            if (!addedCards) //If haven't added cards yet (AH)
             {
+                //Based on which animal was selected, add that animal's card pool (AH)
                 if (animalSelection.animals[0])
                 {
                     AnimalChoice(cardPool.pandaMatchCards, cardPool.pandaChoiceCards, "Panda");
@@ -74,47 +78,42 @@ public class MatchSetUp : MonoBehaviour
 
             if (choiceCards.Count > 0 || matchCards.Count > 0)
             {
-                SetUp();
+                SetUp(); //Set up cards (AH)
             }
             else
             {
-                //Debug.Log("RECAP FROM NO CARDS - MSU UPDATE");
-                manager.state = MatchState.recap;
-                //enclosureCameraUI.SetActive(false);
+                manager.state = MatchState.recap; //Changes game manager state to 'Recap' (AH)
             }
         }
     }
 
     private void SetUp()
     {
-        matchCard = Instantiate(cardPrefab, matchPosition.position, Quaternion.identity);
+        mainCamera.transform.position = new Vector3(50, 0, -10); //Moves main camera to the matching area (AH)
+        enclosureCameraUI.SetActive(true); //Shows enclosure preview (AH)
+
+        matchCard = Instantiate(cardPrefab, matchPosition.position, Quaternion.identity); //Adds a card prefab to the scene at the match position (AH)
         CardDetails matchCardDetails = matchCard.GetComponent<CardDetails>();
-
-        mainCamera.transform.position = new Vector3(50, 0, -10);
-
-        enclosureCameraUI.SetActive(true);
-
         matchCard.transform.parent = matchPosition;
-        matchCard.transform.localPosition = new Vector2(0, 0);
+        matchCard.transform.localPosition = new Vector2(0, 0); //Assigns the match card's parent to the match position, and sets its local position (AH)
 
-        AddCardDetails(matchCardDetails, 1, matchCards, "MatchCard");
+        AddCardDetails(matchCardDetails, 1, matchCards, "MatchCard"); //Add the match's card details (AH)
 
-        for (int i = 0; i < choicePositions.Count; i++)
+        for (int i = 0; i < choicePositions.Count; i++) //for each choice position (AH)
         {
-            choices.Add(Instantiate(cardPrefab, choicePositions[i].position, Quaternion.identity));
+            choices.Add(Instantiate(cardPrefab, choicePositions[i].position, Quaternion.identity)); //Adds a card prefab to the scene at each choice position (AH)
             CardDetails choiceCardDetails = choices[i].GetComponent<CardDetails>();
 
             choices[i].transform.parent = choicePositions[i];
-            choices[i].transform.localPosition = new Vector2(0, 0);
+            choices[i].transform.localPosition = new Vector2(0, 0); //Assigns the choice card's parent to the choice position, and sets its local position (AH)
 
-            AddCardDetails(choiceCardDetails, choices.Count, choiceCards, "ChoiceCard");
+            AddCardDetails(choiceCardDetails, choices.Count, choiceCards, "ChoiceCard"); //Add the choice's card details (AH)
         }
 
-        manager.state = MatchState.calculate;
-
+        manager.state = MatchState.calculate; //Changes game manager state to 'Calculate' (AH)
     }
 
-    public void Shuffle(List<CardInfo> list)
+    public void Shuffle(List<CardInfo> list) //Shuffles all of the list (AH)
     {
         for (int i = 0; i < list.Count; i++)
         {
@@ -125,26 +124,7 @@ public class MatchSetUp : MonoBehaviour
         }
     }
 
-    //private void ClearCards()
-    //{
-    //    if (choiceCards.Count >= 0 || matchCards.Count >= 0)
-    //    {
-    //        choiceCards.RemoveRange(1, 3);
-    //        choices.Clear();
-    //        Shuffle(choiceCards);
-
-    //        matchCards.RemoveAt(0);
-    //        Shuffle(matchCards);
-
-    //        manager.state = MatchState.setUp;
-    //    }
-    //    else
-    //    {
-    //        manager.state = MatchState.recap;
-    //    }
-    //}
-
-    private void AddCardDetails(CardDetails details, int list, List<CardInfo> cards, string tag)
+    private void AddCardDetails(CardDetails details, int list, List<CardInfo> cards, string tag) //Add all of the card details from the given card pool info to the instantiated cards (AH)
     {
         for (int i = 0; i < list; i++)
         {
@@ -176,16 +156,16 @@ public class MatchSetUp : MonoBehaviour
     {
         for (int i = 0; i < animalMatchCards.Length; i++)
         {
-            matchCards.Add(animalMatchCards[i]);
+            matchCards.Add(animalMatchCards[i]); //adds all of the match cards from the animal's card pool (AH)
         }
-        Shuffle(matchCards);
+        Shuffle(matchCards); //shuffle match cards (AH)
 
         for (int i = 0; i < animalChoiceCards.Length; i++)
         {
-            choiceCards.Add(animalChoiceCards[i]);
+            choiceCards.Add(animalChoiceCards[i]); //adds all of the choice cards from the animal's card pool (AH)
         }
-        Shuffle(choiceCards);
+        Shuffle(choiceCards); //shuffle choice cards (AH)
 
-        animalIndicator.text = animalName;
+        animalIndicator.text = animalName; //the animal indicator text is assigned the animal's name (AH)
     }
 }

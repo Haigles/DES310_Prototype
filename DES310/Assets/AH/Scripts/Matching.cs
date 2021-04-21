@@ -17,11 +17,19 @@ public class Matching : MonoBehaviour
     [Header("UI Elements")]
     [Space(10)]
     public GameObject timerUI;
+    public GameObject keeperGoodMatch;
+    public GameObject keeperBadMatch;
+    public GameObject keeperOkayMatch;
     public Text textTimer;
     public Text scoreText;
     public Text stageIndicator;
-    
-    
+
+    [Header("HS Testing")]
+    public bool goodMatch;
+    public bool badMatch;
+    public bool okayMatch;
+    public List<GameObject> StageIcon = new List<GameObject>();
+
     [Header("Current Matches")]
     [Space(10)]
     public int parentPenalty;  
@@ -35,6 +43,7 @@ public class Matching : MonoBehaviour
     int bestMatchScore = 0, middleMatchScore = 0, worstMatchScore = 0;  
     [SerializeField]
     List<int> stageScoreThreshold;
+    public int currentStageIcon = 0;
     
     private MatchSetUp matchSetUp;
     private GameManager manager;
@@ -44,6 +53,7 @@ public class Matching : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        currentStageIcon = 1;
         manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         recap = GameObject.FindGameObjectWithTag("GameManager").GetComponent<Recap>();
         matchSetUp = GameObject.FindGameObjectWithTag("GameManager").GetComponent<MatchSetUp>();
@@ -70,6 +80,24 @@ public class Matching : MonoBehaviour
         if (manager.state == MatchState.matching) //When the game manager is on the 'Matching' state (AH)
         {
             CheckMatch();
+            if(goodMatch == true)
+            {
+                keeperGoodMatch.SetActive(true);
+                keeperBadMatch.SetActive(false);
+                keeperOkayMatch.SetActive(false);
+            }
+            else if(okayMatch == true)
+            {
+                keeperGoodMatch.SetActive(false);
+                keeperBadMatch.SetActive(false);
+                keeperOkayMatch.SetActive(true);
+            }
+            else if(badMatch == true)
+            {
+                keeperGoodMatch.SetActive(false);
+                keeperBadMatch.SetActive(true);
+                keeperOkayMatch.SetActive(false);
+            }
 
             timerIsRunning = true; //Starts Timer (AH)
             Timer();
@@ -129,21 +157,37 @@ public class Matching : MonoBehaviour
             {
                 if (GameObject.ReferenceEquals(canvas.clickResults[i].gameObject, currentChoices[0])) //If choice card is first in list (AH)
                 {
+                    Debug.Log("Good Match");
+                    goodMatch = true;
+                    badMatch = false;
+                    okayMatch = false;
                     AddCardToRecap(currentMatchCard, currentChoices[0]); //Add match card and chosen choice card to recap (AH)
                     CalculateScore(bestMatchScore); //Give best score (AH)
+                    
                 }
                 else if (GameObject.ReferenceEquals(canvas.clickResults[i].gameObject, currentChoices[1])) //If choice card is secong in list (AH)
                 {
+                    Debug.Log("Middle Match");
+                    goodMatch = false;
+                    badMatch = false;
+                    okayMatch = true;
                     AddCardToRecap(currentMatchCard, currentChoices[1]); //Add match card and chosen choice card to recap (AH)
                     CalculateScore(middleMatchScore); //Give middle score (AH)
+                    
                 }
                 else if (GameObject.ReferenceEquals(canvas.clickResults[i].gameObject, currentChoices[2])) //If choice card is third in list (AH)
                 {
+                    Debug.Log("Bad Match");
+                    goodMatch = false;
+                    badMatch = true;
+                    okayMatch = false;
                     AddCardToRecap(currentMatchCard, currentChoices[2]); //Add match card and chosen choice card to recap (AH)
                     CalculateScore(worstMatchScore); //Give worst score (AH)
+                    
                 }
 
                 DrawNewCards(); //Draw new cards (AH)
+
             }
         }
     }
@@ -197,11 +241,19 @@ public class Matching : MonoBehaviour
 
         for (int i = 0; i < stageScoreThreshold.Count; i++)
         {
+            
             if (score >= stageScoreThreshold[i]) //if score is above a certain score thresthold (AH)
             {
+                StageIcon[currentStageIcon].SetActive(false);
+                currentStageIcon++;
+                if (currentStageIcon >= StageIcon.Count)
+                    currentStageIcon = 4;
+                StageIcon[currentStageIcon].SetActive(true);
                 stageCounter++; //increase stage counter by 1 (AH)
                 stageIndicator.text = "Stage " + stageCounter; //Updates stage inicator UI text (AH)
+                
                 recap.stageIndicator.text = "Stage " + stageCounter; //Updates recap stage inicator UI text (AH)
+                
             }
         }
     }

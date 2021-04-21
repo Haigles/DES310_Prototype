@@ -73,7 +73,7 @@ public class SelectEnclosure : MonoBehaviour //Script goes onto every 'Plot' (AH
     void OnMouseExit() //hide all of the UI elements (AH)
     {
         plotHighlight.enabled = false;
-        animalIndicator.enabled = false;
-        stageIndicator.enabled = false;
+        //animalIndicator.enabled = false;
+        //stageIndicator.enabled = false;
     }
 }

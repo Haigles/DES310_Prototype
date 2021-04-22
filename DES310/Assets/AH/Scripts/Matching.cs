@@ -28,7 +28,8 @@ public class Matching : MonoBehaviour
     public bool goodMatch;
     public bool badMatch;
     public bool okayMatch;
-    public List<GameObject> StageIcon = new List<GameObject>();
+    public List<Sprite> StageEnclosureSprites = new List<Sprite>();
+    public GameObject stageEnclosure;
 
     [Header("Current Matches")]
     [Space(10)]
@@ -244,15 +245,17 @@ public class Matching : MonoBehaviour
             
             if (score >= stageScoreThreshold[i]) //if score is above a certain score thresthold (AH)
             {
-                StageIcon[currentStageIcon].SetActive(false);
-                currentStageIcon++;
-                if (currentStageIcon >= StageIcon.Count)
-                    currentStageIcon = 4;
-                StageIcon[currentStageIcon].SetActive(true);
+                //StageIcon[currentStageIcon].SetActive(false);
+                //currentStageIcon++;
+                //if (currentStageIcon >= StageEnclosureSprites.Count)
+                //    currentStageIcon = 4;
+                //StageIcon[currentStageIcon].SetActive(true);
+
+
                 stageCounter++; //increase stage counter by 1 (AH)
-                stageIndicator.text = "Stage " + stageCounter; //Updates stage inicator UI text (AH)
-                
+                stageIndicator.text = "Stage " + stageCounter; //Updates stage inicator UI text (AH)               
                 recap.stageIndicator.text = "Stage " + stageCounter; //Updates recap stage inicator UI text (AH)
+                stageEnclosure.GetComponent<SpriteRenderer>().sprite = StageEnclosureSprites[stageCounter - 1];
                 
             }
         }

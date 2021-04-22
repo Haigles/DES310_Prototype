@@ -7,9 +7,12 @@ using UnityEngine.EventSystems;
 public class AnimalSelection : MonoBehaviour
 {
     GameManager manager;
+    Matching matching;
+
     public GameObject animalSelectionMenu;
 
     public SelectEnclosure selectedEnclosure;
+    public GameObject stageEnclosurePrefab;
 
     [SerializeField]
     public List<bool> animals;
@@ -18,6 +21,7 @@ public class AnimalSelection : MonoBehaviour
     void Start()
     {
         manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        matching = GameObject.FindGameObjectWithTag("GameManager").GetComponent<Matching>();
     }
 
     public void SelectAnimal(int animalIndex)
@@ -30,7 +34,8 @@ public class AnimalSelection : MonoBehaviour
         animals[animalIndex] = true; //Chooses which animal is being matched, based on which button is pressed (AH)
 
         selectedEnclosure.canPick = false;
-        manager.state = MatchState.setUp; //Chamges game manager state to 'SetUp' (AH)
+        InstantiateEnclosure(stageEnclosurePrefab);
+        manager.state = MatchState.setUp; //Chamges game manager state to 'SetUp' (AH)      
         animalSelectionMenu.SetActive(false); //Hide selection menu (AH);
     }
 
@@ -39,5 +44,11 @@ public class AnimalSelection : MonoBehaviour
         manager.state = MatchState.hub; //Chamges game manager state to 'Hub' (AH)
         animalSelectionMenu.SetActive(false); //Hide selection menu (AH);
         selectedEnclosure = null; //Clears selected enclosure (AH)
+    }
+
+    private void InstantiateEnclosure(GameObject enclosure)
+    {
+        GameObject stageEnclosure = Instantiate(enclosure, selectedEnclosure.stageEnclosurePosition.transform.position, Quaternion.identity);
+        matching.stageEnclosure = stageEnclosure;
     }
 }

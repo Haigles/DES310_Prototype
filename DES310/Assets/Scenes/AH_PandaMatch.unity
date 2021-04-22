@@ -348,6 +348,7 @@ MonoBehaviour:
   plotHighlight: {fileID: 98623049}
   animalIndicator: {fileID: 223563517}
   stageIndicator: {fileID: 1280239046}
+  stageEnclosurePosition: {fileID: 1511859937}
 --- !u!60 &98623051
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -389,6 +390,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 385010073}
+  - {fileID: 1511859938}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -699,12 +701,12 @@ MonoBehaviour:
   goodMatch: 0
   badMatch: 0
   okayMatch: 0
-  StageIcon:
-  - {fileID: 562510025}
-  - {fileID: 562510025}
-  - {fileID: 327200935}
-  - {fileID: 829580817}
-  - {fileID: 953614949}
+  StageEnclosureSprites:
+  - {fileID: -5387562833892707887, guid: 5fa6a4cbfd288a2419cf94068530ac16, type: 3}
+  - {fileID: -1381719273282938521, guid: 5fa6a4cbfd288a2419cf94068530ac16, type: 3}
+  - {fileID: -8534697546312751964, guid: 5fa6a4cbfd288a2419cf94068530ac16, type: 3}
+  - {fileID: -3035928866976146300, guid: 5fa6a4cbfd288a2419cf94068530ac16, type: 3}
+  stageEnclosure: {fileID: 0}
   parentPenalty: 5
   currentMatchCard: {fileID: 0}
   currentChoices: []
@@ -3277,6 +3279,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 905381022}
   m_CullTransparentMesh: 0
+--- !u!1 &938378826
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 938378827}
+  m_Layer: 0
+  m_Name: Stage_Enclosure_Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &938378827
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938378826}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.3, y: 1.4, z: 0}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_Children: []
+  m_Father: {fileID: 1168229067}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &953614949
 GameObject:
   m_ObjectHideFlags: 0
@@ -3914,6 +3946,7 @@ MonoBehaviour:
   plotHighlight: {fileID: 1168229064}
   animalIndicator: {fileID: 440246675}
   stageIndicator: {fileID: 2089153527}
+  stageEnclosurePosition: {fileID: 938378826}
 --- !u!60 &1168229066
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -3955,6 +3988,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 284989149}
+  - {fileID: 938378827}
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4018,6 +4052,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 995733407}
+  - {fileID: 2022349389}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4038,6 +4073,7 @@ MonoBehaviour:
   plotHighlight: {fileID: 1172614789}
   animalIndicator: {fileID: 2089754899}
   stageIndicator: {fileID: 1704047222}
+  stageEnclosurePosition: {fileID: 2022349388}
 --- !u!114 &1172614789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4673,6 +4709,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1305715602}
   m_CullTransparentMesh: 0
+--- !u!1 &1511859937
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1511859938}
+  m_Layer: 0
+  m_Name: Stage_Enclosure_Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1511859938
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511859937}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.3, y: 1.4, z: 0}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_Children: []
+  m_Father: {fileID: 98623052}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1529860663
 GameObject:
   m_ObjectHideFlags: 0
@@ -4865,6 +4931,7 @@ MonoBehaviour:
   plotHighlight: {fileID: 1570257472}
   animalIndicator: {fileID: 101550119}
   stageIndicator: {fileID: 1041215975}
+  stageEnclosurePosition: {fileID: 1920798625}
 --- !u!60 &1570257474
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -4906,6 +4973,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 315961199}
+  - {fileID: 1920798626}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6833,6 +6901,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1894793909}
   m_CullTransparentMesh: 0
+--- !u!1 &1920798625
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1920798626}
+  m_Layer: 0
+  m_Name: Stage_Enclosure_Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1920798626
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920798625}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.3, y: 1.4, z: 0}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_Children: []
+  m_Father: {fileID: 1570257475}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1945628952
 GameObject:
   m_ObjectHideFlags: 0
@@ -10702,7 +10800,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animalSelectionMenu: {fileID: 2015358962}
   selectedEnclosure: {fileID: 0}
+  stageEnclosurePrefab: {fileID: 7813991354255587386, guid: 01eb159fdd2393547b245b77ad2ad6c6, type: 3}
   animals: 00000000
+--- !u!1 &2022349388
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2022349389}
+  m_Layer: 0
+  m_Name: Stage_Enclosure_Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2022349389
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2022349388}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.3, y: 1.4, z: 0}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_Children: []
+  m_Father: {fileID: 1172614787}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2035090858
 GameObject:
   m_ObjectHideFlags: 0
@@ -11335,7 +11464,7 @@ Transform:
   m_GameObject: {fileID: 2134141345}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.27017963, y: 0.27764797, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4

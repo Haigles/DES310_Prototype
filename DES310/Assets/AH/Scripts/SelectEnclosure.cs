@@ -21,7 +21,8 @@ public class SelectEnclosure : MonoBehaviour //Script goes onto every 'Plot' (AH
     [Header("TMP Children of This Enclosure")]
     [Space(5)]
     public TMP_Text animalIndicator; //this plot's child 'animalIndicator' (AH) 
-    public TMP_Text stageIndicator; //this plot's child 'stageIndicator' (AH) 
+    public TMP_Text stageIndicator; //this plot's child 'stageIndicator' (AH)
+    public GameObject stageEnclosurePosition;
 
     private GameManager manager;
     private EnclosurePreview enclosureCamera;
@@ -73,7 +74,7 @@ public class SelectEnclosure : MonoBehaviour //Script goes onto every 'Plot' (AH
     void OnMouseExit() //hide all of the UI elements (AH)
     {
         plotHighlight.enabled = false;
-        //animalIndicator.enabled = false;
-        //stageIndicator.enabled = false;
+        animalIndicator.enabled = false;
+        stageIndicator.enabled = false;
     }
 }

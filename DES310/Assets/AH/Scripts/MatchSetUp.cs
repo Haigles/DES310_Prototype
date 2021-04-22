@@ -35,6 +35,7 @@ public class MatchSetUp : MonoBehaviour
     public GameObject enclosureCameraUI;
     public AnimalSelection animalSelection;
     public Text animalIndicator;
+    public GameObject background;
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +51,8 @@ public class MatchSetUp : MonoBehaviour
     {
         if (manager.state == MatchState.setUp)//If game manager state is on 'SetUp' (AH)
         {
+            background.SetActive(true);
+
             if (!addedCards) //If haven't added cards yet (AH)
             {
                 //Based on which animal was selected, add that animal's card pool (AH)

@@ -38,6 +38,7 @@ public class Recap : MonoBehaviour
     [Space(10)]
     [SerializeField]
     List<GameObject> hideUI;
+    public GameObject background;
 
     [Header("Updates from Matching")]
     [Space(10)]
@@ -123,6 +124,7 @@ public class Recap : MonoBehaviour
     private void ResetMatching()
     {
         mainCamera.transform.position = new Vector3(0, 0, -10); //Main camera goes back to the hub screen (AH)
+        background.SetActive(false);
 
         if (matchCards != null)
         {

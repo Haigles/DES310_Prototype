@@ -106,6 +106,9 @@ public class Matching : MonoBehaviour
         else //When the game manager is NOT on the 'Matching' state (AH)
         {
             timerUI.SetActive(false); //Hides Timer UI (AH)
+            keeperGoodMatch.SetActive(false);
+            keeperBadMatch.SetActive(false);
+            keeperOkayMatch.SetActive(false);
         }
     }
 

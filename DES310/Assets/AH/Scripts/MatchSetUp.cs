@@ -44,6 +44,7 @@ public class MatchSetUp : MonoBehaviour
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 
         enclosureCameraUI.SetActive(false);
+        
     }
 
     // Update is called once per frame

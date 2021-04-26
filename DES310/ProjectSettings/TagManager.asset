@@ -10,6 +10,7 @@ TagManager:
   - ChoiceCard
   - Canvas
   - EnclosureCamera
+  - GameMusic
   layers:
   - Default
   - TransparentFX

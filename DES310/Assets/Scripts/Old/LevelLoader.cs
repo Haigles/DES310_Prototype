@@ -17,6 +17,12 @@ public class LevelLoader : MonoBehaviour
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
+    public void Exit()
+    {
+        Application.Quit();
+        Debug.Log("Quit");
+    }
+
     IEnumerator LoadLevel(int levelIndex)
     {
         //Anim

@@ -83,12 +83,14 @@ public class Matching : MonoBehaviour
             CheckMatch();
             if(goodMatch == true)
             {
+                
                 keeperGoodMatch.SetActive(true);
                 keeperBadMatch.SetActive(false);
                 keeperOkayMatch.SetActive(false);
             }
             else if(okayMatch == true)
             {
+                
                 keeperGoodMatch.SetActive(false);
                 keeperBadMatch.SetActive(false);
                 keeperOkayMatch.SetActive(true);
@@ -98,6 +100,7 @@ public class Matching : MonoBehaviour
                 keeperGoodMatch.SetActive(false);
                 keeperBadMatch.SetActive(true);
                 keeperOkayMatch.SetActive(false);
+                
             }
 
             timerIsRunning = true; //Starts Timer (AH)
@@ -224,6 +227,7 @@ public class Matching : MonoBehaviour
         for (int i = 0; i < currentChoices.Count; i++)
         {
             Destroy(currentChoices[i]); //Destroy all cureent choice cards (AH)
+
         }
         Destroy(currentMatchCard); //Destroy current match card (AH)
 
@@ -231,6 +235,7 @@ public class Matching : MonoBehaviour
         matchSetUp.choiceCards.Clear(); //Clear choice cards from card pool (AH)
         matchSetUp.choices.Clear(); //Clear choice list (AH)
         matchSetUp.matchCards.Clear(); //Clear match cards (AH)
+        
     }
 
     private void CalculateScore(int scoreUpdate)
@@ -269,8 +274,12 @@ public class Matching : MonoBehaviour
         GameObject duplicateMatchCard = Instantiate(matchCard, recap.matchPosition.position, Quaternion.identity); //adds a duplicate match card for the recap (AH)
         GameObject duplicateChoiceCard = Instantiate(choiceCard, recap.choicePosition.position, Quaternion.identity); //adds a duplicate choice card that was picked for the recap (AH)
 
+
         duplicateMatchCard.transform.parent = recap.matchPosition; //assigns the duplicate match card's parent to the recap position (AH)
         duplicateChoiceCard.transform.parent = recap.choicePosition; //assigns the duplicate choice card's parent to the recap position (AH)
+
+        duplicateChoiceCard.transform.localScale = new Vector3(1, 1, 1);
+        duplicateMatchCard.transform.localScale = new Vector3(1, 1, 1);
 
         recap.matchCards.Add(duplicateMatchCard); //adds the duplicate match card to the recap match list (AH)
         recap.choiceCards.Add(duplicateChoiceCard); //adds the duplicate choice card to the recap choice list (AH)

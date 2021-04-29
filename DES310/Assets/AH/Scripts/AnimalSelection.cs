@@ -48,7 +48,7 @@ public class AnimalSelection : MonoBehaviour
 
     private void InstantiateEnclosure(GameObject enclosure)
     {
-        GameObject stageEnclosure = Instantiate(enclosure, selectedEnclosure.stageEnclosurePosition.transform.position, Quaternion.identity);
+        GameObject stageEnclosure = Instantiate(enclosure, selectedEnclosure.stageEnclosurePosition.transform.position, Quaternion.Euler(30f, 0f, 0f));
         matching.stageEnclosure = stageEnclosure;
     }
 }

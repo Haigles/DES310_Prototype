@@ -26,25 +26,28 @@ public class CheckClicks : MonoBehaviour
 
     void Update()
     {
-        //Check if the left Mouse button is clicked
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (!PauseMenu.gameIsPaused)
         {
-            //Set up the new Pointer Event
-            PointerEventData pointerData = new PointerEventData(EventSystem.current);
-            List<RaycastResult> results = new List<RaycastResult>();
-
-            //Raycast using the Graphics Raycaster and mouse click position
-            pointerData.position = Input.mousePosition;
-            this.raycaster.Raycast(pointerData, results);
-
-            //For every result returned, output the name of the GameObject on the Canvas hit by the Ray
-            foreach (RaycastResult result in results)
+            //Check if the left Mouse button is clicked
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                Debug.Log("Hit " + result.gameObject.name);
+                //Set up the new Pointer Event
+                PointerEventData pointerData = new PointerEventData(EventSystem.current);
+                List<RaycastResult> results = new List<RaycastResult>();
 
-                if (manager.state == MatchState.matching)
+                //Raycast using the Graphics Raycaster and mouse click position
+                pointerData.position = Input.mousePosition;
+                this.raycaster.Raycast(pointerData, results);
+
+                //For every result returned, output the name of the GameObject on the Canvas hit by the Ray
+                foreach (RaycastResult result in results)
                 {
-                    clickResults.Add(result.gameObject);
+                    Debug.Log("Hit " + result.gameObject.name);
+
+                    if (manager.state == MatchState.matching)
+                    {
+                        clickResults.Add(result.gameObject);
+                    }
                 }
             }
         }

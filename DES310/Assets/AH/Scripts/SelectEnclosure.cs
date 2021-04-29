@@ -50,23 +50,26 @@ public class SelectEnclosure : MonoBehaviour //Script goes onto every 'Plot' (AH
 
     void OnMouseOver()
     {
-        if (manager.state == MatchState.hub) //If game manager state in on 'Hub' (AH)
+        if (!PauseMenu.gameIsPaused)
         {
-            if (canPick) //If enclosure hasn't been populated yet (AH)
-            {
-                plotHighlight.enabled = true; //highlight plot (AH)
-
-                if (Input.GetMouseButtonDown(0)) //If LMB is down (AH)
+            if (manager.state == MatchState.hub) //If game manager state in on 'Hub' (AH)
                 {
-                    enclosureCamera.currentPlot = this.gameObject.transform; //Enclosure Camera frames chosen plot (AH)                  
-                    animalSelectionMenu.GetComponent<AnimalSelection>().selectedEnclosure = this; //This enclosure is assigned to the selected enclosure in the animal selection menu (AH)
-                    manager.state = MatchState.selection; //Changes game manager state to 'Selection' (AH)
+                if (canPick) //If enclosure hasn't been populated yet (AH)
+                {
+                    plotHighlight.enabled = true; //highlight plot (AH)
+
+                    if (Input.GetMouseButtonDown(0)) //If LMB is down (AH)
+                    {
+                        enclosureCamera.currentPlot = this.gameObject.transform; //Enclosure Camera frames chosen plot (AH)                  
+                        animalSelectionMenu.GetComponent<AnimalSelection>().selectedEnclosure = this; //This enclosure is assigned to the selected enclosure in the animal selection menu (AH)
+                        manager.state = MatchState.selection; //Changes game manager state to 'Selection' (AH)
+                    }
                 }
-            }
-            else
-            {
-                animalIndicator.enabled = true; 
-                stageIndicator.enabled = true; //if enclosure has been populated, show results (AH)
+                else
+                {
+                        animalIndicator.enabled = true;
+                        stageIndicator.enabled = true; //if enclosure has been populated, show results (AH)
+                }
             }
         }
     }

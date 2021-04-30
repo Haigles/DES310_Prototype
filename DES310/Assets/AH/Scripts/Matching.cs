@@ -50,6 +50,7 @@ public class Matching : MonoBehaviour
     private GameManager manager;
     private CheckClicks canvas;
     private Recap recap;
+    private GameObject dropPosition;
 
     // Start is called before the first frame update
     void Start()
@@ -59,6 +60,7 @@ public class Matching : MonoBehaviour
         recap = GameObject.FindGameObjectWithTag("GameManager").GetComponent<Recap>();
         matchSetUp = GameObject.FindGameObjectWithTag("GameManager").GetComponent<MatchSetUp>();
         canvas = GameObject.FindGameObjectWithTag("Canvas").GetComponent<CheckClicks>();
+        dropPosition = GameObject.FindGameObjectWithTag("Drop");
 
         timer = assignTimer; //Sets timer to assigned variable (AH)
 
@@ -80,6 +82,7 @@ public class Matching : MonoBehaviour
 
         if (manager.state == MatchState.matching) //When the game manager is on the 'Matching' state (AH)
         {
+            dropPosition.transform.GetComponent<RawImage>().enabled = true;
             CheckMatch();
             if(goodMatch == true)
             {
@@ -99,8 +102,7 @@ public class Matching : MonoBehaviour
             {
                 keeperGoodMatch.SetActive(false);
                 keeperBadMatch.SetActive(true);
-                keeperOkayMatch.SetActive(false);
-                
+                keeperOkayMatch.SetActive(false);              
             }
 
             timerIsRunning = true; //Starts Timer (AH)
@@ -112,6 +114,7 @@ public class Matching : MonoBehaviour
             keeperGoodMatch.SetActive(false);
             keeperBadMatch.SetActive(false);
             keeperOkayMatch.SetActive(false);
+            dropPosition.transform.GetComponent<RawImage>().enabled = false;
         }
     }
 
@@ -158,11 +161,13 @@ public class Matching : MonoBehaviour
     {
         scoreText.enabled = true; //enable score text UI (AH)
 
-        for (int i = 0; i < canvas.clickResults.Count; i++) //Get all results from 'CheckClick' (AH)
+        if (dropPosition.transform.childCount > 0)
         {
-            if (canvas.clickResults[i].gameObject.transform.tag == "ChoiceCard") //If result has tag 'ChoiceCard' (AH)
+            Transform[] child = dropPosition.transform.GetComponentsInChildren<Transform>();
+
+            for (int i = 0; i < child.Length; i++)
             {
-                if (GameObject.ReferenceEquals(canvas.clickResults[i].gameObject, currentChoices[0])) //If choice card is first in list (AH)
+                if (child[i].gameObject == currentChoices[0])
                 {
                     Debug.Log("Good Match");
                     goodMatch = true;
@@ -170,9 +175,8 @@ public class Matching : MonoBehaviour
                     okayMatch = false;
                     AddCardToRecap(currentMatchCard, currentChoices[0]); //Add match card and chosen choice card to recap (AH)
                     CalculateScore(bestMatchScore); //Give best score (AH)
-                    
                 }
-                else if (GameObject.ReferenceEquals(canvas.clickResults[i].gameObject, currentChoices[1])) //If choice card is secong in list (AH)
+                else if (child[i].gameObject == currentChoices[1])
                 {
                     Debug.Log("Middle Match");
                     goodMatch = false;
@@ -180,9 +184,8 @@ public class Matching : MonoBehaviour
                     okayMatch = true;
                     AddCardToRecap(currentMatchCard, currentChoices[1]); //Add match card and chosen choice card to recap (AH)
                     CalculateScore(middleMatchScore); //Give middle score (AH)
-                    
                 }
-                else if (GameObject.ReferenceEquals(canvas.clickResults[i].gameObject, currentChoices[2])) //If choice card is third in list (AH)
+                else if (child[i].gameObject == currentChoices[2])
                 {
                     Debug.Log("Bad Match");
                     goodMatch = false;
@@ -190,13 +193,54 @@ public class Matching : MonoBehaviour
                     okayMatch = false;
                     AddCardToRecap(currentMatchCard, currentChoices[2]); //Add match card and chosen choice card to recap (AH)
                     CalculateScore(worstMatchScore); //Give worst score (AH)
-                    
                 }
-
-                DrawNewCards(); //Draw new cards (AH)
-
             }
+
+            DrawNewCards(); //Draw new cards (AH)
+
         }
+
+        //for (int i = 0; i < canvas.clickResults.Count; i++) //Get all results from 'CheckClick' (AH)
+       // {
+
+            //if (canvas.clickResults[i].gameObject.transform.tag == "ChoiceCard") //If result has tag 'ChoiceCard' (AH)
+            //{
+                //if (GameObject.ReferenceEquals(canvas.clickResults[i].gameObject, currentChoices[0])) //If choice card is first in list (AH)
+                //{
+                //    Debug.Log("Good Match");
+                //    goodMatch = true;
+                //    badMatch = false;
+                //    okayMatch = false;
+                //    AddCardToRecap(currentMatchCard, currentChoices[0]); //Add match card and chosen choice card to recap (AH)
+                //    CalculateScore(bestMatchScore); //Give best score (AH)
+
+                //}
+                //else if (GameObject.ReferenceEquals(canvas.clickResults[i].gameObject, currentChoices[1])) //If choice card is secong in list (AH)
+                //{
+                //    Debug.Log("Middle Match");
+                //    goodMatch = false;
+                //    badMatch = false;
+                //    okayMatch = true;
+                //    AddCardToRecap(currentMatchCard, currentChoices[1]); //Add match card and chosen choice card to recap (AH)
+                //    CalculateScore(middleMatchScore); //Give middle score (AH)
+
+                //}
+                //else if (GameObject.ReferenceEquals(canvas.clickResults[i].gameObject, currentChoices[2])) //If choice card is third in list (AH)
+                //{
+                //    Debug.Log("Bad Match");
+                //    goodMatch = false;
+                //    badMatch = true;
+                //    okayMatch = false;
+                //    AddCardToRecap(currentMatchCard, currentChoices[2]); //Add match card and chosen choice card to recap (AH)
+                //    CalculateScore(worstMatchScore); //Give worst score (AH)
+
+                //}
+
+                //canvas.clickResults[i].GetComponent<Draggable>().dragging = true;
+                //DrawNewCards(); //Draw new cards (AH)
+
+            //}
+        //}
     }
 
     private void DrawNewCards()
@@ -278,8 +322,9 @@ public class Matching : MonoBehaviour
         duplicateMatchCard.transform.parent = recap.matchPosition; //assigns the duplicate match card's parent to the recap position (AH)
         duplicateChoiceCard.transform.parent = recap.choicePosition; //assigns the duplicate choice card's parent to the recap position (AH)
 
-        duplicateChoiceCard.transform.localScale = new Vector3(1, 1, 1);
-        duplicateMatchCard.transform.localScale = new Vector3(1, 1, 1);
+        duplicateChoiceCard.transform.localScale = new Vector3(0.66f, 0.66f, 1);
+        duplicateChoiceCard.transform.tag = "Untagged";
+        duplicateMatchCard.transform.localScale = new Vector3(0.66f, 0.66f, 1);
 
         recap.matchCards.Add(duplicateMatchCard); //adds the duplicate match card to the recap match list (AH)
         recap.choiceCards.Add(duplicateChoiceCard); //adds the duplicate choice card to the recap choice list (AH)

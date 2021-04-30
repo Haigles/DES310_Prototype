@@ -99,6 +99,7 @@ public class MatchSetUp : MonoBehaviour
         matchCard = Instantiate(cardPrefab, matchPosition.position, Quaternion.identity); //Adds a card prefab to the scene at the match position (AH)
         CardDetails matchCardDetails = matchCard.GetComponent<CardDetails>();
         matchCard.transform.parent = matchPosition;
+        matchCard.GetComponent<Draggable>().parentHome = matchCard.transform.parent;
         matchCard.transform.localPosition = new Vector2(0, 0); //Assigns the match card's parent to the match position, and sets its local position (AH)
 
         AddCardDetails(matchCardDetails, 1, matchCards, "MatchCard"); //Add the match's card details (AH)
@@ -109,7 +110,9 @@ public class MatchSetUp : MonoBehaviour
             CardDetails choiceCardDetails = choices[i].GetComponent<CardDetails>();
 
             choices[i].transform.parent = choicePositions[i];
+            choices[i].GetComponent<Draggable>().parentHome = choices[i].transform.parent;
             choices[i].transform.localPosition = new Vector2(0, 0); //Assigns the choice card's parent to the choice position, and sets its local position (AH)
+            
 
             AddCardDetails(choiceCardDetails, choices.Count, choiceCards, "ChoiceCard"); //Add the choice's card details (AH)
         }

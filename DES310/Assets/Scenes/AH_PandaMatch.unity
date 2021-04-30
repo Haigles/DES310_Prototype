@@ -159,7 +159,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6, y: -109}
+  m_AnchoredPosition: {x: 6, y: -132}
   m_SizeDelta: {x: 344.1466, y: 134.33197}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3703063
@@ -254,6 +254,139 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3703061}
+  m_CullTransparentMesh: 0
+--- !u!1 &47092464
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 47092465}
+  - component: {fileID: 47092468}
+  - component: {fileID: 47092467}
+  - component: {fileID: 47092466}
+  m_Layer: 5
+  m_Name: Volume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &47092465
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47092464}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.88172, y: 0.88172, z: 0.88172}
+  m_Children:
+  - {fileID: 1112646118}
+  - {fileID: 112334732}
+  m_Father: {fileID: 558336435}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 49}
+  m_SizeDelta: {x: 504.6277, y: 196.97314}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &47092466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47092464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0.4627451}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.8352941}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 47092467}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1109038429}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 0
+--- !u!114 &47092467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47092464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &47092468
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47092464}
   m_CullTransparentMesh: 0
 --- !u!1 &80466495
 GameObject:
@@ -363,7 +496,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 430, y: -116}
+  m_AnchoredPosition: {x: 438.99997, y: -270}
   m_SizeDelta: {x: 523.8511, y: 523.8511}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &88114963
@@ -1059,17 +1192,17 @@ RectTransform:
   m_GameObject: {fileID: 112334730}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
+  m_LocalScale: {x: 2.0414646, y: 2.0414646, z: 2.0414646}
   m_Children:
   - {fileID: 1882269410}
   - {fileID: 1567705554}
   - {fileID: 229018724}
-  m_Father: {fileID: 558336435}
-  m_RootOrder: 2
+  m_Father: {fileID: 47092465}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 57}
+  m_AnchoredPosition: {x: 0, y: -67}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &115626187
@@ -1122,7 +1255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5707547, g: 1, b: 0.575971, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1253,7 +1386,7 @@ MonoBehaviour:
   bestMatchScore: 100
   middleMatchScore: 50
   worstMatchScore: 0
-  stageScoreThreshold: 64000000c80000002c01000090010000f401000058020000bc020000200300008403000064000000
+  stageScoreThreshold: 64000000c80000002c01000090010000f401000058020000bc0200002003000084030000e8030000
   currentStageIcon: 0
 --- !u!114 &211235626
 MonoBehaviour:
@@ -1324,14 +1457,14 @@ RectTransform:
   m_GameObject: {fileID: 217128881}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5093, y: 1.5093, z: 1.5093}
   m_Children: []
   m_Father: {fileID: 357888152}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -250, y: 150}
+  m_AnchoredPosition: {x: -392, y: 150}
   m_SizeDelta: {x: 60, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &217128883
@@ -2322,7 +2455,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &357888152
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2842,7 +2975,7 @@ RectTransform:
   m_Children:
   - {fileID: 1935504234}
   - {fileID: 3703062}
-  - {fileID: 112334732}
+  - {fileID: 47092465}
   m_Father: {fileID: 1109038428}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3004,14 +3137,14 @@ RectTransform:
   m_GameObject: {fileID: 590029826}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.603, y: 1.603, z: 1.603}
   m_Children: []
   m_Father: {fileID: 357888152}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 250, y: 150}
+  m_AnchoredPosition: {x: 370, y: 150}
   m_SizeDelta: {x: 60, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &590029828
@@ -3278,7 +3411,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 616972821520642283, guid: 03ba1c7f2c2bc504f9711286c2b29066, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 616972822542110787, guid: 03ba1c7f2c2bc504f9711286c2b29066, type: 3}
       propertyPath: delayTime
@@ -3576,7 +3709,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 102.5}
+  m_AnchoredPosition: {x: 0, y: 156}
   m_SizeDelta: {x: -600, y: -345}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &795149343
@@ -4994,6 +5127,101 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 558336434}
+--- !u!1 &1112646117
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1112646118}
+  - component: {fileID: 1112646121}
+  - component: {fileID: 1112646120}
+  - component: {fileID: 1112646119}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1112646118
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1112646117}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 47092465}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 13.524417}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1112646119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1112646117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 4, y: -4}
+  m_UseGraphicAlpha: 1
+--- !u!114 &1112646120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1112646117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: c9f6d0e7bc8541498c9a4799ba184ede, type: 3}
+    m_FontSize: 100
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 175
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: VOLUME
+--- !u!222 &1112646121
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1112646117}
+  m_CullTransparentMesh: 0
 --- !u!1 &1114390019
 GameObject:
   m_ObjectHideFlags: 0
@@ -5605,7 +5833,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 429.99997, y: -115.99999}
+  m_AnchoredPosition: {x: 439, y: -270}
   m_SizeDelta: {x: 523.8511, y: 523.8511}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1213105226
@@ -6055,7 +6283,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 429.99997, y: -115.99999}
+  m_AnchoredPosition: {x: 438.99994, y: -270}
   m_SizeDelta: {x: 523.8511, y: 523.8511}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1285151299
@@ -6224,7 +6452,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 125, y: 150}
+  m_AnchoredPosition: {x: 184, y: 150}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1305715602
@@ -6509,7 +6737,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 4c7eccb373eef0c488cabac55c7e0aa9, type: 3}
+  m_Texture: {fileID: 2800000, guid: 897c5e732821b184db29ae0ba08e743f, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -7006,7 +7234,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -125, y: 150}
+  m_AnchoredPosition: {x: -195, y: 150}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1620349756
@@ -8782,7 +9010,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1867772058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9084,7 +9312,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 211}
+  m_AnchoredPosition: {x: 0, y: 230}
   m_SizeDelta: {x: 504.6277, y: 196.97314}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1935504235
@@ -9303,7 +9531,7 @@ MonoBehaviour:
     cardAge: 10
     cardParents: 
     cardDistance: UK
-    cardHealth: Only eats SteakBakes
+    cardHealth: Curious
     valueAge: 10
     maleParent: George
     femaleParent: Georgia
@@ -9318,6 +9546,50 @@ MonoBehaviour:
     valueAge: 4
     maleParent: Bob
     femaleParent: Bobbina
+    valueDistance: 0
+    valueHealth: 1
+  - cardName: Haig
+    cardPicture: {fileID: 2800000, guid: 14595b2dac772f349abd5ad15fb937f2, type: 3}
+    cardAge: 12
+    cardParents: 
+    cardDistance: UK
+    cardHealth: Fat
+    valueAge: 12
+    maleParent: Terry
+    femaleParent: Alison
+    valueDistance: 0
+    valueHealth: 3
+  - cardName: Ross
+    cardPicture: {fileID: 2800000, guid: 500628da090af7447b59d2ec3850f94a, type: 3}
+    cardAge: 6
+    cardParents: 
+    cardDistance: UK
+    cardHealth: Healthy
+    valueAge: 6
+    maleParent: Billy
+    femaleParent: Maggie
+    valueDistance: 0
+    valueHealth: 1
+  - cardName: Wang Wang
+    cardPicture: {fileID: 2800000, guid: a771e29c47489d24c8851b97c32ea6fc, type: 3}
+    cardAge: 10
+    cardParents: 
+    cardDistance: Australia
+    cardHealth: Gluttonous
+    valueAge: 10
+    maleParent: Ozzie
+    femaleParent: Sheila
+    valueDistance: 0
+    valueHealth: 1
+  - cardName: Yang Yang
+    cardPicture: {fileID: 2800000, guid: 568057a7527ffc549a210e411bf966ce, type: 3}
+    cardAge: 11
+    cardParents: 
+    cardDistance: USA
+    cardHealth: Territorial
+    valueAge: 11
+    maleParent: Chad
+    femaleParent: Ying
     valueDistance: 0
     valueHealth: 1
   pandaChoiceCards:
@@ -9452,6 +9724,138 @@ MonoBehaviour:
     maleParent: Jack
     femaleParent: Izzy
     valueDistance: 3
+    valueHealth: 0
+  - cardName: Lin Lin
+    cardPicture: {fileID: 2800000, guid: bbf80f851a53df84ba41b60c288fd34a, type: 3}
+    cardAge: 14
+    cardParents: 
+    cardDistance: 1725
+    cardHealth: Good Health
+    valueAge: 14
+    maleParent: Cao Cao
+    femaleParent: Dreana
+    valueDistance: 1
+    valueHealth: 0
+  - cardName: Morgan
+    cardPicture: {fileID: 2800000, guid: 151656d3c2a0eaf4a841b4e0273ce43c, type: 3}
+    cardAge: 7
+    cardParents: 
+    cardDistance: 13570
+    cardHealth: Fit
+    valueAge: 7
+    maleParent: Freeman
+    femaleParent: Akali
+    valueDistance: 4
+    valueHealth: 0
+  - cardName: Elizabeth
+    cardPicture: {fileID: 2800000, guid: af7553585fbb38f4b97513aaa1cd8a00, type: 3}
+    cardAge: 6
+    cardParents: 
+    cardDistance: 1250
+    cardHealth: Poor Eyesight
+    valueAge: 6
+    maleParent: Jack
+    femaleParent: Izzy
+    valueDistance: 1
+    valueHealth: 2
+  - cardName: Lara
+    cardPicture: {fileID: 2800000, guid: 568057a7527ffc549a210e411bf966ce, type: 3}
+    cardAge: 10
+    cardParents: 
+    cardDistance: 7000
+    cardHealth: Arthritis
+    valueAge: 10
+    maleParent: Ozzie
+    femaleParent: Amelia
+    valueDistance: 4
+    valueHealth: 4
+  - cardName: Samus
+    cardPicture: {fileID: 2800000, guid: 35baaee32593b994c9b50da0e74de2ca, type: 3}
+    cardAge: 7
+    cardParents: 
+    cardDistance: 786
+    cardHealth: Aggressive
+    valueAge: 7
+    maleParent: Chad
+    femaleParent: Ying
+    valueDistance: 1
+    valueHealth: 6
+  - cardName: Ling Bing
+    cardPicture: {fileID: 2800000, guid: 500628da090af7447b59d2ec3850f94a, type: 3}
+    cardAge: 11
+    cardParents: 
+    cardDistance: 8941
+    cardHealth: Underweight
+    valueAge: 5
+    maleParent: Chuang Chuang
+    femaleParent: Lin Hui
+    valueDistance: 6
+    valueHealth: 4
+  - cardName: Kate
+    cardPicture: {fileID: 2800000, guid: 253877abf82c3a84294c49775abbe1ba, type: 3}
+    cardAge: 4
+    cardParents: 
+    cardDistance: 6435
+    cardHealth: Friendly
+    valueAge: 4
+    maleParent: Hugo
+    femaleParent: Sosa
+    valueDistance: 5
+    valueHealth: 0
+  - cardName: Barbara
+    cardPicture: {fileID: 2800000, guid: 151656d3c2a0eaf4a841b4e0273ce43c, type: 3}
+    cardAge: 9
+    cardParents: 
+    cardDistance: 1400
+    cardHealth: Relaxed
+    valueAge: 9
+    maleParent: Terry
+    femaleParent: Maggie
+    valueDistance: 2
+    valueHealth: 0
+  - cardName: Pang Tong
+    cardPicture: {fileID: 2800000, guid: 253877abf82c3a84294c49775abbe1ba, type: 3}
+    cardAge: 8
+    cardParents: 
+    cardDistance: 874
+    cardHealth: Good Health
+    valueAge: 8
+    maleParent: Ozzie
+    femaleParent: Ying
+    valueDistance: 1
+    valueHealth: 0
+  - cardName: Raia
+    cardPicture: {fileID: 2800000, guid: 500628da090af7447b59d2ec3850f94a, type: 3}
+    cardAge: 12
+    cardParents: 
+    cardDistance: 3333
+    cardHealth: Confrontational
+    valueAge: 12
+    maleParent: Billy
+    femaleParent: Ying
+    valueDistance: 3
+    valueHealth: 4
+  - cardName: Liu Liu
+    cardPicture: {fileID: 2800000, guid: 253877abf82c3a84294c49775abbe1ba, type: 3}
+    cardAge: 8
+    cardParents: 
+    cardDistance: 47
+    cardHealth: One-Eyed
+    valueAge: 8
+    maleParent: Lenny
+    femaleParent: Georgia
+    valueDistance: 0
+    valueHealth: 2
+  - cardName: Kelly
+    cardPicture: {fileID: 2800000, guid: 253877abf82c3a84294c49775abbe1ba, type: 3}
+    cardAge: 6
+    cardParents: 
+    cardDistance: 6085
+    cardHealth: High Fertility
+    valueAge: 7
+    maleParent: Chad
+    femaleParent: Alison
+    valueDistance: 5
     valueHealth: 0
   penguinMatchCards:
   - cardName: Pingu
@@ -13791,7 +14195,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 4c7eccb373eef0c488cabac55c7e0aa9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 897c5e732821b184db29ae0ba08e743f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

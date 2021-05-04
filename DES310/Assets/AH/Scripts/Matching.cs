@@ -17,6 +17,8 @@ public class Matching : MonoBehaviour
     [Header("UI Elements")]
     [Space(10)]
     public GameObject timerUI;
+    public GameObject studbookButton;
+    public GameObject actualStudbook;
     public GameObject keeperGoodMatch;
     public GameObject keeperBadMatch;
     public GameObject keeperOkayMatch;
@@ -111,6 +113,8 @@ public class Matching : MonoBehaviour
         else //When the game manager is NOT on the 'Matching' state (AH)
         {
             timerUI.SetActive(false); //Hides Timer UI (AH)
+            studbookButton.SetActive(false);
+            actualStudbook.SetActive(false);
             keeperGoodMatch.SetActive(false);
             keeperBadMatch.SetActive(false);
             keeperOkayMatch.SetActive(false);
@@ -356,6 +360,7 @@ public class Matching : MonoBehaviour
     private void DisplayTimer(float timeToDisplay)
     {
         timerUI.SetActive(true); //Shows timer UI element (AH)
+        studbookButton.SetActive(true);
 
         float minutes = Mathf.FloorToInt(timeToDisplay / 60);
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);

@@ -12,6 +12,7 @@ TagManager:
   - EnclosureCamera
   - GameMusic
   - Drop
+  - TutorialCard
   layers:
   - Default
   - TransparentFX

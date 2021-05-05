@@ -10,7 +10,8 @@ public enum MatchState //All Game States (AH)
     calculate,
     matching,
     recap,
-    reset
+    reset,
+    tutorial
 }
 public class GameManager : MonoBehaviour //Controls which state the game is in (AH)
 {

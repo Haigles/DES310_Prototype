@@ -5,6 +5,16 @@ using UnityEngine;
 public class CardPool : MonoBehaviour
 {
     [Space(5)]
+    [Header("Tutorial Match Card Pool")]
+    [Space(10)]
+    [SerializeField] public CardInfo[] tutorialMatchCards;
+
+    [Space(5)]
+    [Header("Tutorial Choice Card Pool")]
+    [Space(10)]
+    [SerializeField] public CardInfo[] tutorialChoiceCards;
+
+    [Space(5)]
     [Header("Panda Match Card Pool")]
     [Space(10)]
     [SerializeField] public CardInfo[] pandaMatchCards;

@@ -59,22 +59,22 @@ public class MatchSetUp : MonoBehaviour
                 //Based on which animal was selected, add that animal's card pool (AH)
                 if (animalSelection.animals[0])
                 {
-                    AnimalChoice(cardPool.pandaMatchCards, cardPool.pandaChoiceCards, "Panda");
+                    AnimalChoice(cardPool.pandaMatchCards, cardPool.pandaChoiceCards, "Panda", true);
                 }
                 else
                 if (animalSelection.animals[1])
                 {
-                    AnimalChoice(cardPool.penguinMatchCards, cardPool.penguinChoiceCards, "Penguin");
+                    AnimalChoice(cardPool.penguinMatchCards, cardPool.penguinChoiceCards, "Penguin", true);
                 }
                 else
                 if (animalSelection.animals[2])
                 {
-                    AnimalChoice(cardPool.giraffeMatchCards, cardPool.giraffeChoiceCards, "Giraffe");
+                    AnimalChoice(cardPool.giraffeMatchCards, cardPool.giraffeChoiceCards, "Giraffe", true);
                 }
                 else
                 if (animalSelection.animals[3])
                 {
-                    AnimalChoice(cardPool.lionMatchCards, cardPool.lionChoiceCards, "Lion");
+                    AnimalChoice(cardPool.lionMatchCards, cardPool.lionChoiceCards, "Lion", true);
                 }
 
                 addedCards = true;
@@ -131,7 +131,7 @@ public class MatchSetUp : MonoBehaviour
         }
     }
 
-    private void AddCardDetails(CardDetails details, int list, List<CardInfo> cards, string tag) //Add all of the card details from the given card pool info to the instantiated cards (AH)
+    public void AddCardDetails(CardDetails details, int list, List<CardInfo> cards, string tag) //Add all of the card details from the given card pool info to the instantiated cards (AH)
     {
         for (int i = 0; i < list; i++)
         {
@@ -159,19 +159,23 @@ public class MatchSetUp : MonoBehaviour
         }
     }
 
-    public void AnimalChoice(CardInfo[] animalMatchCards, CardInfo[] animalChoiceCards, string animalName)
+    public void AnimalChoice(CardInfo[] animalMatchCards, CardInfo[] animalChoiceCards, string animalName, bool shuffle)
     {
         for (int i = 0; i < animalMatchCards.Length; i++)
         {
             matchCards.Add(animalMatchCards[i]); //adds all of the match cards from the animal's card pool (AH)
         }
-        Shuffle(matchCards); //shuffle match cards (AH)
+
+        if(shuffle)
+            Shuffle(matchCards); //shuffle match cards (AH)
 
         for (int i = 0; i < animalChoiceCards.Length; i++)
         {
             choiceCards.Add(animalChoiceCards[i]); //adds all of the choice cards from the animal's card pool (AH)
         }
-        Shuffle(choiceCards); //shuffle choice cards (AH)
+
+        if (shuffle)
+            Shuffle(choiceCards); //shuffle choice cards (AH)
 
         animalIndicator.text = animalName; //the animal indicator text is assigned the animal's name (AH)
     }

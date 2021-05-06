@@ -1763,7 +1763,8 @@ MonoBehaviour:
   goodMatch: 0
   badMatch: 0
   okayMatch: 0
-  StageEnclosureSprites:
+  animalSelection: {fileID: 2015358964}
+  stageEnclosureSprites:
   - {fileID: 21300000, guid: ee1c267155ed02b49b6de35df6629eb6, type: 3}
   - {fileID: 21300000, guid: 91d0735bf2464ab43968478e34febcfd, type: 3}
   - {fileID: 21300000, guid: 4b00cf3f21bd2924380f1b528e12f3a2, type: 3}
@@ -1774,6 +1775,17 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 97097f02a981597469ccaeabed02f6b0, type: 3}
   - {fileID: 21300000, guid: 87850351d4fb7ca4c9a98ba8180eb83e, type: 3}
   - {fileID: 21300000, guid: 74c0a191ab59247428f011042a4e1240, type: 3}
+  penguinStageEnclosureSprites:
+  - {fileID: 21300000, guid: ad26ad32a507da24c89a81bcb771b103, type: 3}
+  - {fileID: 21300000, guid: 95342af10663f2f4aaf38843036a1955, type: 3}
+  - {fileID: 21300000, guid: 319fdf540f72d984a9f11f99b6141e1b, type: 3}
+  - {fileID: 21300000, guid: 5e2b3ddfb23a93b4ca97e7bf7f189914, type: 3}
+  - {fileID: 21300000, guid: ba36c553236545643a61856cc4c4c049, type: 3}
+  - {fileID: 21300000, guid: b9318f56083576341b0253b938a43b4f, type: 3}
+  - {fileID: 21300000, guid: ba61aa8fd98b04b419686b53ed45687f, type: 3}
+  - {fileID: 21300000, guid: c07c8caa5d094aa42a8ce73da278765f, type: 3}
+  - {fileID: 21300000, guid: caf5c262315b6604e836214b91e68e47, type: 3}
+  - {fileID: 21300000, guid: c7c02113a78e20043b9513430de78541, type: 3}
   stageEnclosure: {fileID: 0}
   parentPenalty: 5
   currentMatchCard: {fileID: 0}
@@ -1796,7 +1808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b32796d157cdbdd4090c23e9393091bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 7
+  state: 0
 --- !u!114 &211235627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11323,7 +11335,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 1894793912}
   m_OnClick:
     m_PersistentCalls:
@@ -11377,7 +11389,7 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1894793909}
-  m_CullTransparentMesh: 0
+  m_CullTransparentMesh: 1
 --- !u!1 &1920798625
 GameObject:
   m_ObjectHideFlags: 0
@@ -12284,180 +12296,180 @@ MonoBehaviour:
   penguinMatchCards:
   - cardName: Pingu
     cardPicture: {fileID: 0}
-    cardAge: 
+    cardAge: 5
     cardParents: 
-    cardDistance: 
-    cardHealth: 
-    valueAge: 0
-    maleParent: 
-    femaleParent: 
+    cardDistance: UK
+    cardHealth: Savage
+    valueAge: 5
+    maleParent: Jack
+    femaleParent: Jill
     valueDistance: 0
-    valueHealth: 0
+    valueHealth: 1
   - cardName: Happy
     cardPicture: {fileID: 0}
-    cardAge: 
+    cardAge: 6
     cardParents: 
-    cardDistance: 
-    cardHealth: 
-    valueAge: 0
-    maleParent: 
-    femaleParent: 
+    cardDistance: UK
+    cardHealth: Good vibes
+    valueAge: 6
+    maleParent: Lenny
+    femaleParent: Penny
     valueDistance: 0
     valueHealth: 0
   - cardName: Flipper
     cardPicture: {fileID: 0}
-    cardAge: 
+    cardAge: 10
     cardParents: 
-    cardDistance: 
-    cardHealth: 
-    valueAge: 0
-    maleParent: 
-    femaleParent: 
+    cardDistance: UK
+    cardHealth: Curious
+    valueAge: 10
+    maleParent: George
+    femaleParent: Georgia
     valueDistance: 0
-    valueHealth: 0
+    valueHealth: 1
   - cardName: Tux
     cardPicture: {fileID: 0}
-    cardAge: 
+    cardAge: 4
     cardParents: 
-    cardDistance: 
-    cardHealth: 
-    valueAge: 0
-    maleParent: 
-    femaleParent: 
+    cardDistance: China
+    cardHealth: Shy
+    valueAge: 4
+    maleParent: Bob
+    femaleParent: Bobbina
     valueDistance: 0
-    valueHealth: 0
+    valueHealth: 1
   penguinChoiceCards:
   - cardName: Beaky
     cardPicture: {fileID: 0}
-    cardAge: 
+    cardAge: 7
     cardParents: 
-    cardDistance: 
-    cardHealth: 
-    valueAge: 0
-    maleParent: 
-    femaleParent: 
-    valueDistance: 0
-    valueHealth: 0
+    cardDistance: 7932
+    cardHealth: Low Libido
+    valueAge: 7
+    maleParent: Jack
+    femaleParent: Tilly
+    valueDistance: 4
+    valueHealth: 3
   - cardName: Sneaky
     cardPicture: {fileID: 0}
-    cardAge: 
+    cardAge: 6
     cardParents: 
-    cardDistance: 
-    cardHealth: 
-    valueAge: 0
-    maleParent: 
-    femaleParent: 
-    valueDistance: 0
+    cardDistance: 2509
+    cardHealth: Good Health
+    valueAge: 6
+    maleParent: Paul
+    femaleParent: Paula
+    valueDistance: 2
     valueHealth: 0
   - cardName: Peaky
     cardPicture: {fileID: 0}
-    cardAge: 
+    cardAge: 5
     cardParents: 
-    cardDistance: 
-    cardHealth: 
-    valueAge: 0
-    maleParent: 
-    femaleParent: 
-    valueDistance: 0
-    valueHealth: 0
+    cardDistance: 872
+    cardHealth: Sprained Flipper
+    valueAge: 5
+    maleParent: Karl
+    femaleParent: Karen
+    valueDistance: 1
+    valueHealth: 1
   - cardName: Tweaky
     cardPicture: {fileID: 0}
-    cardAge: 
+    cardAge: 7
     cardParents: 
-    cardDistance: 
-    cardHealth: 
-    valueAge: 0
-    maleParent: 
-    femaleParent: 
-    valueDistance: 0
-    valueHealth: 0
+    cardDistance: 1140
+    cardHealth: Overweight
+    valueAge: 7
+    maleParent: Lenny
+    femaleParent: Jill
+    valueDistance: 1
+    valueHealth: 2
   - cardName: Leaky
     cardPicture: {fileID: 0}
-    cardAge: 
+    cardAge: 4
     cardParents: 
-    cardDistance: 
-    cardHealth: 
-    valueAge: 0
-    maleParent: 
-    femaleParent: 
-    valueDistance: 0
-    valueHealth: 0
+    cardDistance: 8282
+    cardHealth: Anxiety
+    valueAge: 4
+    maleParent: Jack
+    femaleParent: Penny
+    valueDistance: 3
+    valueHealth: 1
   - cardName: Weaky
     cardPicture: {fileID: 0}
-    cardAge: 
+    cardAge: 5
     cardParents: 
-    cardDistance: 
-    cardHealth: 
-    valueAge: 0
-    maleParent: 
-    femaleParent: 
-    valueDistance: 0
-    valueHealth: 0
+    cardDistance: 534
+    cardHealth: Decaying Womb
+    valueAge: 5
+    maleParent: Ayden
+    femaleParent: Floss
+    valueDistance: 1
+    valueHealth: 10
   - cardName: Squeaky
     cardPicture: {fileID: 0}
-    cardAge: 
+    cardAge: 8
     cardParents: 
-    cardDistance: 
-    cardHealth: 
-    valueAge: 0
-    maleParent: 
-    femaleParent: 
-    valueDistance: 0
+    cardDistance: 10201
+    cardHealth: Promiscuous
+    valueAge: 8
+    maleParent: Lenny
+    femaleParent: Penny
+    valueDistance: 3
     valueHealth: 0
   - cardName: Sleeky
     cardPicture: {fileID: 0}
-    cardAge: 
+    cardAge: 9
     cardParents: 
-    cardDistance: 
-    cardHealth: 
-    valueAge: 0
-    maleParent: 
-    femaleParent: 
-    valueDistance: 0
-    valueHealth: 0
+    cardDistance: 5244
+    cardHealth: Lazy
+    valueAge: 9
+    maleParent: Biscuit
+    femaleParent: Cookie
+    valueDistance: 2
+    valueHealth: 1
   - cardName: Geeky
     cardPicture: {fileID: 0}
-    cardAge: 
+    cardAge: 10
     cardParents: 
-    cardDistance: 
-    cardHealth: 
-    valueAge: 0
-    maleParent: 
-    femaleParent: 
-    valueDistance: 0
+    cardDistance: 16875
+    cardHealth: Good Health
+    valueAge: 10
+    maleParent: George
+    femaleParent: Jill
+    valueDistance: 4
     valueHealth: 0
   - cardName: Cheeky
     cardPicture: {fileID: 0}
-    cardAge: 
+    cardAge: 5
     cardParents: 
-    cardDistance: 
-    cardHealth: 
-    valueAge: 0
-    maleParent: 
-    femaleParent: 
-    valueDistance: 0
+    cardDistance: 5000
+    cardHealth: Good Health
+    valueAge: 5
+    maleParent: Gary
+    femaleParent: Jackie
+    valueDistance: 2
     valueHealth: 0
   - cardName: Bleaky
     cardPicture: {fileID: 0}
-    cardAge: 
+    cardAge: 6
     cardParents: 
-    cardDistance: 
-    cardHealth: 
+    cardDistance: 7500
+    cardHealth: Hates Pufferfish
     valueAge: 0
-    maleParent: 
-    femaleParent: 
-    valueDistance: 0
-    valueHealth: 0
+    maleParent: Dennis
+    femaleParent: Hayley
+    valueDistance: 2
+    valueHealth: 10
   - cardName: Fleeky
     cardPicture: {fileID: 0}
-    cardAge: 
+    cardAge: 5
     cardParents: 
-    cardDistance: 
-    cardHealth: 
-    valueAge: 0
-    maleParent: 
-    femaleParent: 
-    valueDistance: 0
+    cardDistance: 2500
+    cardHealth: Loves Pufferfish
+    valueAge: 5
+    maleParent: Jack
+    femaleParent: Izzy
+    valueDistance: 3
     valueHealth: 0
   giraffeMatchCards:
   - cardName: Lincoln

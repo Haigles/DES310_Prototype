@@ -30,7 +30,9 @@ public class Matching : MonoBehaviour
     public bool goodMatch;
     public bool badMatch;
     public bool okayMatch;
-    public List<Sprite> StageEnclosureSprites = new List<Sprite>();
+    public AnimalSelection animalSelection;
+    public List<Sprite> stageEnclosureSprites = new List<Sprite>();
+    public List<Sprite> penguinStageEnclosureSprites = new List<Sprite>();
     public GameObject stageEnclosure;
 
     [Header("Current Matches")]
@@ -311,8 +313,18 @@ public class Matching : MonoBehaviour
                 stageCounter++; //increase stage counter by 1 (AH)
                 stageIndicator.text = "Stage " + stageCounter; //Updates stage inicator UI text (AH)               
                 recap.stageIndicator.text = "Stage " + stageCounter; //Updates recap stage inicator UI text (AH)
-                stageEnclosure.GetComponent<SpriteRenderer>().sprite = StageEnclosureSprites[stageCounter - 1];
-                
+
+                if (animalSelection.animals[0] == true)
+                {
+                    stageEnclosure.GetComponent<SpriteRenderer>().sprite = stageEnclosureSprites[stageCounter - 1];
+                }
+                else if (animalSelection.animals[1] == true)
+                {
+                    stageEnclosure.GetComponent<SpriteRenderer>().sprite = penguinStageEnclosureSprites[stageCounter - 1];
+                }
+
+
+
             }
         }
     }

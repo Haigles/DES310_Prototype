@@ -9,6 +9,7 @@ public class Recap : MonoBehaviour
 {
     [Header("Animal Selection")]
     public AnimalSelection animalSelection;
+    public UpgradeEnclosure enclosurePreview;
 
     [Header("UI GameObjects")]
     [Space(10)]
@@ -19,8 +20,7 @@ public class Recap : MonoBehaviour
     [Header("UI Text Elements")]
     [Space(10)]
     public TMP_Text textPercentNumber;
-    public Text recapScore;
-    public Text stageIndicator;
+    public TMP_Text recapScore;
 
     [Header("Card Positions")]
     [Space(10)]
@@ -139,15 +139,11 @@ public class Recap : MonoBehaviour
             matchCards.Clear(); //Clear all lists (AH)
         }
 
-        animalSelection.selectedEnclosure.animalIndicator.text = matchSetUp.animalIndicator.text;
-        animalSelection.selectedEnclosure.stageIndicator.text = stageIndicator.text; //Update completed enclosure with the results (AH)
-
         checkMatchInt = 0; 
         matchSetUp.addedCards = false;
         matching.timer = matching.assignTimer;
         matching.score = 0;
         matching.scoreText.text = "Score: " + matching.score;
-        matching.stageIndicator.text = "Stage 1";
         //reset  all variables(AH)
 
         manager.state = MatchState.hub; //Changes game manager state to 'Hub' (AH)
@@ -171,6 +167,9 @@ public class Recap : MonoBehaviour
 
     public void HomeButton()
     {
+        enclosurePreview.panda = false;
+        enclosurePreview.penguin = false;
+        enclosurePreview.enclosureStage = 0;
         manager.state = MatchState.reset; //Change game manager state to 'Reset' (AH)
     }
 }

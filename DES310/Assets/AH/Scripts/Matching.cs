@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 public class Matching : MonoBehaviour
 {
@@ -22,17 +23,16 @@ public class Matching : MonoBehaviour
     public GameObject keeperGoodMatch;
     public GameObject keeperBadMatch;
     public GameObject keeperOkayMatch;
-    public Text textTimer;
-    public Text scoreText;
-    public Text stageIndicator;
+    public TMP_Text textTimer;
+    public TMP_Text scoreText;
 
     [Header("HS Testing")]
     public bool goodMatch;
     public bool badMatch;
     public bool okayMatch;
     public AnimalSelection animalSelection;
-    public List<Sprite> stageEnclosureSprites = new List<Sprite>();
-    public List<Sprite> penguinStageEnclosureSprites = new List<Sprite>();
+    //public List<Sprite> stageEnclosureSprites = new List<Sprite>();
+    //public List<Sprite> penguinStageEnclosureSprites = new List<Sprite>();
     public GameObject stageEnclosure;
 
     [Header("Current Matches")]
@@ -86,7 +86,6 @@ public class Matching : MonoBehaviour
 
         if (manager.state == MatchState.matching) //When the game manager is on the 'Matching' state (AH)
         {
-            dropPosition.transform.GetComponent<RawImage>().enabled = true;
             CheckMatch();
             if(goodMatch == true)
             {
@@ -120,7 +119,6 @@ public class Matching : MonoBehaviour
             keeperGoodMatch.SetActive(false);
             keeperBadMatch.SetActive(false);
             keeperOkayMatch.SetActive(false);
-            dropPosition.transform.GetComponent<RawImage>().enabled = false;
         }
     }
 
@@ -296,7 +294,7 @@ public class Matching : MonoBehaviour
         recap.compatability.Add(scoreUpdate); //adds 'scoreUpdate' value to the recap compatability list (AH)
 
         scoreText.text = "Score: " + score; //Updates score UI text (AH)
-        recap.recapScore.text = "" + score; //Updates the recap score UI text (AH)
+        //recap.recapScore.text = "" + score; //Updates the recap score UI text (AH)
 
         for (int i = 0; i < stageScoreThreshold.Count; i++)
         {
@@ -310,21 +308,9 @@ public class Matching : MonoBehaviour
                 //StageIcon[currentStageIcon].SetActive(true);
 
 
-                stageCounter++; //increase stage counter by 1 (AH)
-                stageIndicator.text = "Stage " + stageCounter; //Updates stage inicator UI text (AH)               
-                recap.stageIndicator.text = "Stage " + stageCounter; //Updates recap stage inicator UI text (AH)
-
-                if (animalSelection.animals[0] == true)
-                {
-                    stageEnclosure.GetComponent<SpriteRenderer>().sprite = stageEnclosureSprites[stageCounter - 1];
-                }
-                else if (animalSelection.animals[1] == true)
-                {
-                    stageEnclosure.GetComponent<SpriteRenderer>().sprite = penguinStageEnclosureSprites[stageCounter - 1];
-                }
-
-
-
+                stageCounter++;
+                matchSetUp.enclosurePreview.enclosureStage = (stageCounter - 1);//increase stage counter by 1 (AH)
+                stageEnclosure.GetComponent<SpriteRenderer>().sprite = matchSetUp.enclosurePreview.GetComponent<SpriteRenderer>().sprite;
             }
         }
     }

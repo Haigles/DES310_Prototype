@@ -13,6 +13,8 @@ TagManager:
   - GameMusic
   - Drop
   - TutorialCard
+  - GlobalLight
+  - Point
   layers:
   - Default
   - TransparentFX
@@ -22,7 +24,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - TutorialLayer
   - 
   - 
   - 
@@ -49,4 +51,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ignore
+    uniqueID: 713540519
     locked: 0

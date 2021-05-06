@@ -32,19 +32,16 @@ public class MatchSetUp : MonoBehaviour
 
     [Header("UI Elements")]
     [Space(10)]
-    public GameObject enclosureCameraUI;
     public AnimalSelection animalSelection;
-    public Text animalIndicator;
     public GameObject background;
+    public GameObject topRightUIElements;
+    public UpgradeEnclosure enclosurePreview;
 
     // Start is called before the first frame update
     void Start()
     {
         manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-        mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-
-        enclosureCameraUI.SetActive(false);
-        
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera");       
     }
 
     // Update is called once per frame
@@ -53,6 +50,7 @@ public class MatchSetUp : MonoBehaviour
         if (manager.state == MatchState.setUp)//If game manager state is on 'SetUp' (AH)
         {
             background.SetActive(true);
+            topRightUIElements.SetActive(true);
 
             if (!addedCards) //If haven't added cards yet (AH)
             {
@@ -60,21 +58,25 @@ public class MatchSetUp : MonoBehaviour
                 if (animalSelection.animals[0])
                 {
                     AnimalChoice(cardPool.pandaMatchCards, cardPool.pandaChoiceCards, "Panda", true);
+                    enclosurePreview.panda = true;
                 }
                 else
                 if (animalSelection.animals[1])
                 {
                     AnimalChoice(cardPool.penguinMatchCards, cardPool.penguinChoiceCards, "Penguin", true);
+                    enclosurePreview.penguin = true;
                 }
                 else
                 if (animalSelection.animals[2])
                 {
                     AnimalChoice(cardPool.giraffeMatchCards, cardPool.giraffeChoiceCards, "Giraffe", true);
+                    //enclosurePreview.GetComponent<UpgradeEnclosure>().giraffe = true;
                 }
                 else
                 if (animalSelection.animals[3])
                 {
                     AnimalChoice(cardPool.lionMatchCards, cardPool.lionChoiceCards, "Lion", true);
+                    //enclosurePreview.GetComponent<UpgradeEnclosure>().lion = true;
                 }
 
                 addedCards = true;
@@ -94,7 +96,6 @@ public class MatchSetUp : MonoBehaviour
     private void SetUp()
     {
         mainCamera.transform.position = new Vector3(50, 0, -10); //Moves main camera to the matching area (AH)
-        enclosureCameraUI.SetActive(true); //Shows enclosure preview (AH)
 
         matchCard = Instantiate(cardPrefab, matchPosition.position, Quaternion.identity); //Adds a card prefab to the scene at the match position (AH)
         CardDetails matchCardDetails = matchCard.GetComponent<CardDetails>();
@@ -113,7 +114,6 @@ public class MatchSetUp : MonoBehaviour
             choices[i].GetComponent<Draggable>().parentHome = choices[i].transform.parent;
             choices[i].transform.localPosition = new Vector2(0, 0); //Assigns the choice card's parent to the choice position, and sets its local position (AH)
             
-
             AddCardDetails(choiceCardDetails, choices.Count, choiceCards, "ChoiceCard"); //Add the choice's card details (AH)
         }
 
@@ -176,7 +176,5 @@ public class MatchSetUp : MonoBehaviour
 
         if (shuffle)
             Shuffle(choiceCards); //shuffle choice cards (AH)
-
-        animalIndicator.text = animalName; //the animal indicator text is assigned the animal's name (AH)
     }
 }

@@ -25,7 +25,6 @@ public class SelectEnclosure : MonoBehaviour //Script goes onto every 'Plot' (AH
     public GameObject stageEnclosurePosition;
 
     private GameManager manager;
-    private EnclosurePreview enclosureCamera;
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +35,6 @@ public class SelectEnclosure : MonoBehaviour //Script goes onto every 'Plot' (AH
         plotHighlight.enabled = false; //starts with all UI elements disabled (AH)
 
         manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-        enclosureCamera = GameObject.FindGameObjectWithTag("EnclosureCamera").GetComponent<EnclosurePreview>(); 
     }
 
     // Update is called once per frame
@@ -59,8 +57,7 @@ public class SelectEnclosure : MonoBehaviour //Script goes onto every 'Plot' (AH
                     plotHighlight.enabled = true; //highlight plot (AH)
 
                     if (Input.GetMouseButtonDown(0)) //If LMB is down (AH)
-                    {
-                        enclosureCamera.currentPlot = this.gameObject.transform; //Enclosure Camera frames chosen plot (AH)                  
+                    {               
                         animalSelectionMenu.GetComponent<AnimalSelection>().selectedEnclosure = this; //This enclosure is assigned to the selected enclosure in the animal selection menu (AH)
                         manager.state = MatchState.selection; //Changes game manager state to 'Selection' (AH)
                     }

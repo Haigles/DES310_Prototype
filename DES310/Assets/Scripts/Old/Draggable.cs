@@ -84,7 +84,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         transform.localScale = initialScale;
         if (this.transform.tag == "ChoiceCard")
         {
-            this.transform.position = eventData.position;
+            this.transform.position = eventData.pointerCurrentRaycast.worldPosition;
         }
     }
 

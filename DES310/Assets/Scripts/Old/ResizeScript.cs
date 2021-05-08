@@ -8,7 +8,7 @@ public class ResizeScript : MonoBehaviour
     public void OnMouseOver()
     {
         Debug.Log("enter");
-        transform.localScale += new Vector3(1.5F, 1.5f, 1.5f); //adjust these values as you see fit
+        transform.localScale = new Vector3(0.5F, 0.5f, 0.5f); //adjust these values as you see fit
     }
 
 

@@ -28,11 +28,13 @@ public class MatchSetUp : MonoBehaviour
     public bool addedCards = false;
 
     private GameManager manager;
+    public CameraHandler cameraHandler;
     private GameObject mainCamera;
 
     [Header("UI Elements")]
     [Space(10)]
     public AnimalSelection animalSelection;
+    public GameObject matchesPosition;
     public GameObject background;
     public GameObject topRightUIElements;
     public UpgradeEnclosure enclosurePreview;
@@ -95,7 +97,8 @@ public class MatchSetUp : MonoBehaviour
 
     private void SetUp()
     {
-        mainCamera.transform.position = new Vector3(50, 0, -10); //Moves main camera to the matching area (AH)
+        cameraHandler.ChangeCameraPosMatch();
+        //mainCamera.transform.position = new Vector3(50, 0, -10); //Moves main camera to the matching area (AH)
 
         matchCard = Instantiate(cardPrefab, matchPosition.position, Quaternion.identity); //Adds a card prefab to the scene at the match position (AH)
         CardDetails matchCardDetails = matchCard.GetComponent<CardDetails>();

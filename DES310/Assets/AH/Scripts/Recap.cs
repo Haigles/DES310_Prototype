@@ -29,7 +29,7 @@ public class Recap : MonoBehaviour
       
     private int checkMatchInt = 0;
     private GameManager manager;
-    private GameObject mainCamera;
+    public CameraHandler cameraHandler;
     private MatchSetUp matchSetUp;
     private Matching matching;
     
@@ -53,7 +53,7 @@ public class Recap : MonoBehaviour
         manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         matchSetUp = GameObject.FindGameObjectWithTag("GameManager").GetComponent<MatchSetUp>();
         matching = GameObject.FindGameObjectWithTag("GameManager").GetComponent<Matching>();
-        mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        //mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
     }
 
     // Update is called once per frame
@@ -123,7 +123,8 @@ public class Recap : MonoBehaviour
 
     private void ResetMatching()
     {
-        mainCamera.transform.position = new Vector3(0, 0, -10); //Main camera goes back to the hub screen (AH)
+        cameraHandler.ChangeCameraPosSelect();
+        //mainCamera.transform.position = new Vector3(0, 0, -10); //Main camera goes back to the hub screen (AH)
         background.SetActive(false);
 
         if (matchCards != null)

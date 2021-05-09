@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Start.unity
+    path: Assets/AH/Scenes/Start.unity
     guid: d532213256f636a489003070a3b2e5a6
   - enabled: 1
-    path: Assets/Scenes/AH_PandaMatch.unity
+    path: Assets/AH/Scenes/AH_PandaMatch.unity
     guid: 9d3a372c54dfad640a88e9bc01219b4f
   m_configObjects: {}

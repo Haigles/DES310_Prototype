@@ -10,7 +10,6 @@ public class AnimalSelection : MonoBehaviour
     Matching matching;
 
     public GameObject animalSelectionMenu;
-
     public SelectEnclosure selectedEnclosure;
     public GameObject stageEnclosurePrefab;
 
@@ -34,7 +33,8 @@ public class AnimalSelection : MonoBehaviour
         animals[animalIndex] = true; //Chooses which animal is being matched, based on which button is pressed (AH)
 
         selectedEnclosure.canPick = false;
-        InstantiateEnclosure(stageEnclosurePrefab);
+        matching.stageEnclosure = selectedEnclosure.gameObject;
+        ResizeEnclosure(selectedEnclosure.gameObject);
         manager.state = MatchState.setUp; //Chamges game manager state to 'SetUp' (AH)      
         animalSelectionMenu.SetActive(false); //Hide selection menu (AH);
     }
@@ -46,9 +46,9 @@ public class AnimalSelection : MonoBehaviour
         selectedEnclosure = null; //Clears selected enclosure (AH)
     }
 
-    public void InstantiateEnclosure(GameObject enclosure)
+    public void ResizeEnclosure(GameObject enclosure)
     {
-        GameObject stageEnclosure = Instantiate(enclosure, selectedEnclosure.stageEnclosurePosition.transform.position, Quaternion.Euler(30f, 0f, 0f));
-        matching.stageEnclosure = stageEnclosure;
+        enclosure.transform.localScale = new Vector3(0.5f, 0.5f, 1f);
+        enclosure.transform.localPosition += selectedEnclosure.newOffset;
     }
 }

@@ -9,8 +9,8 @@ public class Matching : MonoBehaviour
 {
     [Header("Timer Variables")]
     public bool activateTimer = false;
-    
-    public float assignTimer = 0;
+    public float assignTimer = 0f;
+    public float increaseTimer = 0f;
     [HideInInspector]
     public float timer = 0;
     private bool timerIsRunning;
@@ -18,6 +18,7 @@ public class Matching : MonoBehaviour
     [Header("UI Elements")]
     [Space(10)]
     public GameObject timerUI;
+    public GameObject increasePrefab;
     public GameObject studbookButton;
     public GameObject actualStudbook;
     public GameObject keeperGoodMatch;
@@ -45,7 +46,11 @@ public class Matching : MonoBehaviour
     [Space(10)]
     public int score = 0;
     [SerializeField]
-    int bestMatchScore = 0, middleMatchScore = 0, worstMatchScore = 0;  
+    int bestMatchScore = 0, middleMatchScore = 0, worstMatchScore = 0;
+    [SerializeField]
+    List<int> combos = new List<int>();
+    public int comboStage = 0;
+    private int highestCombo = 0;
     [SerializeField]
     List<int> stageScoreThreshold;
     public int currentStageIcon = 0;
@@ -151,13 +156,60 @@ public class Matching : MonoBehaviour
 
             choiceDetails.cardTotalValue = totalValue; //Assigns the cards total value based on match (AH)
 
+            CalculateDifference(choiceDetails, totalAgeValue, totalLocationValue, totalHealthValue, totalParentValue);
+
             manager.state = MatchState.matching; //Changes game state to 'Matching' (AH)
+        }
+    }
+
+    private void CalculateDifference(CardDetails cardDetails, int age, int distance, int health, int parents)
+    {
+        cardDetails.values.Add(age);
+        cardDetails.values.Add(distance);
+        cardDetails.values.Add(health);
+        cardDetails.values.Add(parents);
+
+        cardDetails.values.Sort(SortDifferences);
+
+        if (cardDetails.values[3] == age)
+        {
+            cardDetails.highAge = true;
+            cardDetails.highLocation = false;
+            cardDetails.highHealth = false;
+            cardDetails.highParents = false;
+        }
+        else if (cardDetails.values[3] == distance)
+        {
+            cardDetails.highAge = false;
+            cardDetails.highLocation = true;
+            cardDetails.highHealth = false;
+            cardDetails.highParents = false;
+        }
+        else if (cardDetails.values[3] == health)
+        {
+            cardDetails.highAge = false;
+            cardDetails.highLocation = false;
+            cardDetails.highHealth = true;
+            cardDetails.highParents = false;
+        }
+        else if (cardDetails.values[3] == parents)
+        {
+            cardDetails.highAge = false;
+            cardDetails.highLocation = false;
+            cardDetails.highHealth = false;
+            cardDetails.highParents = true;
         }
     }
 
     static int SortByValue(GameObject value1, GameObject value2)
     {
         return value1.GetComponent<CardDetails>().cardTotalValue.CompareTo(value2.GetComponent<CardDetails>().cardTotalValue);
+        //Sorts list based on the cards total value, with the smallest number appearing first (AH)
+    }
+
+    static int SortDifferences(int value1, int value2)
+    {
+        return value1.CompareTo(value2);
         //Sorts list based on the cards total value, with the smallest number appearing first (AH)
     }
 
@@ -173,35 +225,44 @@ public class Matching : MonoBehaviour
             {
                 if (child[i].gameObject == currentChoices[0])
                 {
-                    Debug.Log("Good Match");
+                    //Debug.Log("Good Match");
                     goodMatch = true;
                     badMatch = false;
                     okayMatch = false;
+                    currentChoices[0].GetComponent<CardDetails>().matchValue = 0;
                     AddCardToRecap(currentMatchCard, currentChoices[0]); //Add match card and chosen choice card to recap (AH)
-                    CalculateScore(bestMatchScore); //Give best score (AH)
+                    comboStage++;
+                    CheckCombo(comboStage);
+                    timer += increaseTimer;
+                    InstantiateIncrease("+" + increaseTimer, timerUI);
+                    InstantiateIncrease("Combo x" + comboStage, scoreText.transform.gameObject);
+                    CalculateScore(bestMatchScore + combos[comboStage]); //Give best score (AH)
                 }
                 else if (child[i].gameObject == currentChoices[1])
                 {
-                    Debug.Log("Middle Match");
+                    //Debug.Log("Middle Match");
                     goodMatch = false;
                     badMatch = false;
                     okayMatch = true;
+                    currentChoices[1].GetComponent<CardDetails>().matchValue = 1;
                     AddCardToRecap(currentMatchCard, currentChoices[1]); //Add match card and chosen choice card to recap (AH)
-                    CalculateScore(middleMatchScore); //Give middle score (AH)
+                    comboStage = 0;
+                    CalculateScore(middleMatchScore + combos[comboStage]); //Give middle score (AH)
                 }
                 else if (child[i].gameObject == currentChoices[2])
                 {
-                    Debug.Log("Bad Match");
+                    //Debug.Log("Bad Match");
                     goodMatch = false;
                     badMatch = true;
                     okayMatch = false;
+                    currentChoices[2].GetComponent<CardDetails>().matchValue = 2;
                     AddCardToRecap(currentMatchCard, currentChoices[2]); //Add match card and chosen choice card to recap (AH)
-                    CalculateScore(worstMatchScore); //Give worst score (AH)
+                    comboStage = 0;
+                    CalculateScore(worstMatchScore + combos[comboStage]); //Give worst score (AH)
                 }
             }
 
             DrawNewCards(); //Draw new cards (AH)
-
         }
 
         //for (int i = 0; i < canvas.clickResults.Count; i++) //Get all results from 'CheckClick' (AH)
@@ -282,15 +343,15 @@ public class Matching : MonoBehaviour
         canvas.clickResults.Clear(); //Clear click results (AH)
         matchSetUp.choiceCards.Clear(); //Clear choice cards from card pool (AH)
         matchSetUp.choices.Clear(); //Clear choice list (AH)
-        matchSetUp.matchCards.Clear(); //Clear match cards (AH)
-        
+        matchSetUp.matchCards.Clear(); //Clear match cards (AH)       
     }
 
     private void CalculateScore(int scoreUpdate)
     {
-        int stageCounter = 1; //start stage counter at 1 (AH)
+        int stageCounter = 0; //start stage counter at 1 (AH)
 
         score += scoreUpdate; //increase score by 'scoreUpdate' (AH)
+        scoreUpdate -= combos[comboStage];
         recap.compatability.Add(scoreUpdate); //adds 'scoreUpdate' value to the recap compatability list (AH)
 
         scoreText.text = "Score: " + score; //Updates score UI text (AH)
@@ -301,15 +362,8 @@ public class Matching : MonoBehaviour
             
             if (score >= stageScoreThreshold[i]) //if score is above a certain score thresthold (AH)
             {
-                //StageIcon[currentStageIcon].SetActive(false);
-                //currentStageIcon++;
-                //if (currentStageIcon >= StageEnclosureSprites.Count)
-                //    currentStageIcon = 4;
-                //StageIcon[currentStageIcon].SetActive(true);
-
-
                 stageCounter++;
-                matchSetUp.enclosurePreview.enclosureStage = (stageCounter - 1);//increase stage counter by 1 (AH)
+                matchSetUp.enclosurePreview.enclosureStage = (stageCounter);//increase stage counter by 1 (AH)
                 stageEnclosure.GetComponent<SpriteRenderer>().sprite = matchSetUp.enclosurePreview.GetComponent<SpriteRenderer>().sprite;
             }
         }
@@ -317,16 +371,25 @@ public class Matching : MonoBehaviour
 
     private void AddCardToRecap(GameObject matchCard, GameObject choiceCard)
     {
+        float scale = 0.66f;
         GameObject duplicateMatchCard = Instantiate(matchCard, recap.matchPosition.position, Quaternion.identity); //adds a duplicate match card for the recap (AH)
         GameObject duplicateChoiceCard = Instantiate(choiceCard, recap.choicePosition.position, Quaternion.identity); //adds a duplicate choice card that was picked for the recap (AH)
-
+        CardDetails duplicateChoiceCardDetails = duplicateChoiceCard.GetComponent<CardDetails>();
+        CardDetails choiceCardDetails = choiceCard.GetComponent<CardDetails>();
 
         duplicateMatchCard.transform.parent = recap.matchPosition; //assigns the duplicate match card's parent to the recap position (AH)
         duplicateChoiceCard.transform.parent = recap.choicePosition; //assigns the duplicate choice card's parent to the recap position (AH)
 
-        duplicateChoiceCard.transform.localScale = new Vector3(0.66f, 0.66f, 1);
+        duplicateChoiceCard.transform.localScale = new Vector3(scale, scale, 1);
         duplicateChoiceCard.transform.tag = "Untagged";
-        duplicateMatchCard.transform.localScale = new Vector3(0.66f, 0.66f, 1);
+        duplicateChoiceCardDetails.matchValue = choiceCardDetails.matchValue;
+        duplicateChoiceCardDetails.highAge = choiceCardDetails.highAge;
+        duplicateChoiceCardDetails.highLocation = choiceCardDetails.highLocation;
+        duplicateChoiceCardDetails.highHealth = choiceCardDetails.highHealth;
+        duplicateChoiceCardDetails.highParents = choiceCardDetails.highParents;
+
+        duplicateMatchCard.transform.localScale = new Vector3(scale, scale, 1);
+        duplicateMatchCard.transform.tag = "Untagged";
 
         recap.matchCards.Add(duplicateMatchCard); //adds the duplicate match card to the recap match list (AH)
         recap.choiceCards.Add(duplicateChoiceCard); //adds the duplicate choice card to the recap choice list (AH)
@@ -364,6 +427,23 @@ public class Matching : MonoBehaviour
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
 
         textTimer.text = string.Format("{0:00}:{1:00}", minutes, seconds); //Formats timer text into minutes and seconds (AH)
+    }
+
+    private void InstantiateIncrease(string text, GameObject parent)
+    {
+        GameObject increase = Instantiate(increasePrefab, Vector3.zero, Quaternion.identity);
+        increase.transform.parent = parent.transform;
+        increase.transform.localPosition = Vector3.zero;
+        increase.GetComponent<Increase>().text.text = text;
+    }
+
+    private void CheckCombo(int currentCombo)
+    {
+        if (currentCombo >= highestCombo)
+        {
+            highestCombo = currentCombo;
+            recap.comboStage = highestCombo;
+        }
     }
 }
 

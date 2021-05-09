@@ -9,6 +9,7 @@ public class SelectEnclosure : MonoBehaviour //Script goes onto every 'Plot' (AH
 {
     [Space(5)]
     public bool canPick = true; //checks if plot has been populated already (AH)
+    public Vector3 newOffset = new Vector3();
 
     [Header("Scene Canvas' Selection_Menu")]
     [Space(5)]
@@ -20,8 +21,6 @@ public class SelectEnclosure : MonoBehaviour //Script goes onto every 'Plot' (AH
 
     [Header("TMP Children of This Enclosure")]
     [Space(5)]
-    public TMP_Text animalIndicator; //this plot's child 'animalIndicator' (AH) 
-    public TMP_Text stageIndicator; //this plot's child 'stageIndicator' (AH)
     public GameObject stageEnclosurePosition;
 
     private GameManager manager;
@@ -30,8 +29,6 @@ public class SelectEnclosure : MonoBehaviour //Script goes onto every 'Plot' (AH
     void Start()
     {
         animalSelectionMenu.SetActive(false);
-        animalIndicator.enabled = false;
-        stageIndicator.enabled = false;
         plotHighlight.enabled = false; //starts with all UI elements disabled (AH)
 
         manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
@@ -62,11 +59,6 @@ public class SelectEnclosure : MonoBehaviour //Script goes onto every 'Plot' (AH
                         manager.state = MatchState.selection; //Changes game manager state to 'Selection' (AH)
                     }
                 }
-                else
-                {
-                        animalIndicator.enabled = true;
-                        stageIndicator.enabled = true; //if enclosure has been populated, show results (AH)
-                }
             }
         }
     }
@@ -74,7 +66,5 @@ public class SelectEnclosure : MonoBehaviour //Script goes onto every 'Plot' (AH
     void OnMouseExit() //hide all of the UI elements (AH)
     {
         plotHighlight.enabled = false;
-        animalIndicator.enabled = false;
-        stageIndicator.enabled = false;
     }
 }

@@ -61,7 +61,9 @@ public class CardInfo
 {
     public string cardName;
 
+    [Header("Textures")]
     public Texture cardPicture;
+    public Color backgroundColour;
 
     [Header("Strings")]
     public string cardAge;
@@ -70,12 +72,12 @@ public class CardInfo
     public string cardHealth;
 
     [Header("Values")]
-    [Range(0, 100)]
+    [Range(0, 50)]
     public int valueAge;
     public string maleParent;
     public string femaleParent;
-    [Range(0, 100)]
+    [Range(0, 5)]
     public int valueDistance;
-    [Range(0, 100)]
+    [Range(-5, 10)]
     public int valueHealth;
 }

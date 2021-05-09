@@ -11,9 +11,15 @@ public enum MatchState //All Game States (AH)
     matching,
     recap,
     reset,
-    tutorial
+    tutorial,
+    startMenu
 }
 public class GameManager : MonoBehaviour //Controls which state the game is in (AH)
 {
     public MatchState state;
+
+    public void changeState(int newState)
+    {
+        state = (MatchState)newState;
+    }
 }

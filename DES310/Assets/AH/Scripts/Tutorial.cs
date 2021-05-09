@@ -11,6 +11,8 @@ public class Tutorial : MonoBehaviour
     private GameManager manager = null;
     private MatchSetUp matchSetUp = null;
     private Light2D globalLight = null;
+    private CameraHandler cameraHandler = null;
+
     private bool isLightOn = true;
     private int[] darkStages = { 1, 3, 4, 5, 6, 7, 9, 10, 12, 15, 18};
 
@@ -84,6 +86,7 @@ public class Tutorial : MonoBehaviour
         manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         matchSetUp = GameObject.FindGameObjectWithTag("GameManager").GetComponent<MatchSetUp>();
         globalLight = GameObject.FindGameObjectWithTag("GlobalLight").GetComponent<Light2D>();
+        cameraHandler = GameObject.FindGameObjectWithTag("GameManager").GetComponent<CameraHandler>();
         enclosureUpgrade = enclosurePreview.GetComponent<UpgradeEnclosure>();
 
         for (int i = 0; i < cardPool.tutorialMatchCards.Length; i++)
@@ -105,6 +108,7 @@ public class Tutorial : MonoBehaviour
     {
         if (manager.state == MatchState.tutorial)
         {
+            cameraHandler.ChangeCameraPosMatch();
             tutorialScreen.SetActive(true);
             scoreText.text = "Score: " + score;
 
@@ -175,7 +179,7 @@ public class Tutorial : MonoBehaviour
             EnableCards();
             ClearPoints();
             Point(grabbedPrefab, choicePositions[0].transform.gameObject, Vector3.zero, 0, "Card_Health", false);
-            MoveImage(choicePositions[0].transform.position, GameObject.FindGameObjectWithTag("Point").transform, dropPosition.transform, 300f);
+            MoveImage(choicePositions[0].transform.position, GameObject.FindGameObjectWithTag("Point").transform, dropPosition.transform, 5f);
 
             if (dropPosition.childCount > 0)
             {             
@@ -283,9 +287,9 @@ public class Tutorial : MonoBehaviour
                 SetUp(3);
                 bestPosition = choicePositions[1].transform.gameObject;
 
-                Point(pointPrefab, choicePositions[0].transform.gameObject, new Vector3(0, 115, 0), 180, "Card_Parents_Info", true);
-                Point(pointPrefab, choicePositions[1].transform.gameObject, new Vector3(0, 115, 0), 180, "Card_Parents_Info", true);
-                Point(pointPrefab, choicePositions[2].transform.gameObject, new Vector3(0, 115, 0), 180, "Card_Parents_Info", false);
+                Point(pointPrefab, choicePositions[0].transform.gameObject, new Vector3(0, 100, 0), 180, "Card_Parents_Male_Info", true);
+                Point(pointPrefab, choicePositions[1].transform.gameObject, new Vector3(0, 100, 0), 180, "Card_Parents_Male_Info", true);
+                Point(pointPrefab, choicePositions[2].transform.gameObject, new Vector3(0, 100, 0), 180, "Card_Parents_Male_Info", false);
             }
             
         }
@@ -367,6 +371,7 @@ public class Tutorial : MonoBehaviour
         }
         else
         {
+            cameraHandler.ChangeCameraPosSelect();
             manager.state = MatchState.hub;
         }
 

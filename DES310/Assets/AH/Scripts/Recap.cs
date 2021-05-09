@@ -21,6 +21,10 @@ public class Recap : MonoBehaviour
     [Space(10)]
     public TMP_Text textPercentNumber;
     public TMP_Text recapScore;
+    public TMP_Text comboCounter;
+    public RecapDialogue recapDialogue = null;
+    public TMP_Text dialogueText = null;
+    private bool hasUpdatedDialogue = false;
 
     [Header("Card Positions")]
     [Space(10)]
@@ -28,6 +32,7 @@ public class Recap : MonoBehaviour
     public Transform choicePosition;
       
     private int checkMatchInt = 0;
+    public int comboStage = 0;
     private GameManager manager;
     public CameraHandler cameraHandler;
     private MatchSetUp matchSetUp;
@@ -42,6 +47,7 @@ public class Recap : MonoBehaviour
 
     [Header("Updates from Matching")]
     [Space(10)]
+    public GameObject recapEnclosure = null;
     public List<GameObject> matchCards = new List<GameObject>();
     public List<GameObject> choiceCards = new List<GameObject>();
     public List<int> compatability = new List<int>();
@@ -61,9 +67,23 @@ public class Recap : MonoBehaviour
     {
         if (manager.state == MatchState.recap) //If game manager state is on 'Recap' (AH)
         {
+            for (int i = 0; i < matchCards.Count; i++)
+            {
+                matchCards[i].GetComponent<Draggable>().enabled = false;
+            }
+            for (int i = 0; i < choiceCards.Count; i++)
+            {
+                choiceCards[i].GetComponent<Draggable>().enabled = false;
+            }
+
+            recapScore.text = "" + matching.score;
+            comboCounter.text = "Highest Combo: x" + comboStage;
+            recapEnclosure.GetComponent<SpriteRenderer>().sprite = matchSetUp.enclosurePreview.GetComponent<SpriteRenderer>().sprite;
+            recapEnclosure.GetComponent<RawImage>().texture = matchSetUp.enclosurePreview.GetComponent<RawImage>().texture;
             recapScreen.SetActive(true); //Show Recap Screen (AH)
             HideUIElements(); //Hide other certain UI elements (AH)
             ShowMatches(); //Show matches made (AH)
+            UpdateDialogue();
         }
         else
         {
@@ -145,17 +165,76 @@ public class Recap : MonoBehaviour
         matching.timer = matching.assignTimer;
         matching.score = 0;
         matching.scoreText.text = "Score: " + matching.score;
+        matching.comboStage = 0;
         //reset  all variables(AH)
 
         manager.state = MatchState.hub; //Changes game manager state to 'Hub' (AH)
+    }
+
+    private void UpdateDialogue()
+    {
+        CardDetails choiceCard = choicePosition.gameObject.GetComponentInChildren<CardDetails>();
+
+        if (!hasUpdatedDialogue)
+        {
+            if (choiceCard.matchValue == 0)
+            {
+                int rng = Random.Range(0, 2);
+
+                dialogueText.text = recapDialogue.dialogue[rng];
+
+            }
+            else if (choiceCard.matchValue == 1)
+            {
+                if (choiceCard.highAge)
+                {
+                    dialogueText.text = recapDialogue.dialogue[8];
+                }
+                else if (choiceCard.highLocation)
+                {
+                    dialogueText.text = recapDialogue.dialogue[3];
+                }
+                else if (choiceCard.highHealth)
+                {
+                    dialogueText.text = recapDialogue.dialogue[4];
+                }
+                else if (choiceCard.highParents)
+                {
+                    dialogueText.text = recapDialogue.dialogue[5];
+                }
+            }
+            else if (choiceCard.matchValue == 2)
+            {
+                if (choiceCard.highAge)
+                {
+                    dialogueText.text = recapDialogue.dialogue[8];
+                }
+                else if (choiceCard.highLocation)
+                {
+                    dialogueText.text = recapDialogue.dialogue[3];
+                }
+                else if (choiceCard.highHealth)
+                {
+                    dialogueText.text = recapDialogue.dialogue[6];
+                }
+                else if (choiceCard.highParents)
+                {
+                    dialogueText.text = recapDialogue.dialogue[7];
+                }
+            }
+
+            hasUpdatedDialogue = true;
+        }
     }
 
     public void NextButton()
     {
         if (checkMatchInt < matchCards.Count - 1)
         {
-            checkMatchInt++; //increase checkMatchInt variable by 1 (AH)
+            checkMatchInt++;//increase checkMatchInt variable by 1 (AH)
         }
+
+        hasUpdatedDialogue = false;
     }
 
     public void BackButton()
@@ -164,6 +243,8 @@ public class Recap : MonoBehaviour
         {
             checkMatchInt--; //decrease checkMatchInt variable by 1 (AH)
         }
+
+        hasUpdatedDialogue = false;
     }
 
     public void HomeButton()

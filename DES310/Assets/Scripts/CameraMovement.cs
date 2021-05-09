@@ -28,7 +28,6 @@ public class CameraMovement : MonoBehaviour
         float distance = Vector3.Distance(cameraMovePosition, transform.position);
         float camSpeed = 2f;
 
-        transform.position = transform.position + cameraMoveDir * distance * camSpeed * Time.deltaTime;
-        
+        transform.position = transform.position + cameraMoveDir * distance * camSpeed * Time.deltaTime;      
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class MatchSetUp : MonoBehaviour
 {
@@ -139,21 +140,23 @@ public class MatchSetUp : MonoBehaviour
         for (int i = 0; i < list; i++)
         {
             details.transform.tag = tag;
-            details.nameText.GetComponent<Text>().text = cards[i].cardName;
+            details.nameText.GetComponent<TMP_Text>().text = cards[i].cardName;
             details.cardPicture.GetComponent<RawImage>().texture = cards[i].cardPicture;
-            details.ageText.GetComponent<Text>().text = cards[i].cardAge;
-            details.parentsText.GetComponent<Text>().text = cards[i].maleParent + " & " + cards[i].femaleParent;
+            details.backgroundColour.GetComponent<RawImage>().color = cards[i].backgroundColour;
+            details.ageText.GetComponent<TMP_Text>().text = cards[i].cardAge;
+            details.maleParentText.GetComponent<TMP_Text>().text = cards[i].maleParent;
+            details.femaleParentText.GetComponent<TMP_Text>().text = cards[i].femaleParent;
 
             if (details.transform.tag == "ChoiceCard")
             {
-                details.distanceText.GetComponent<Text>().text = cards[i].cardDistance + "km";
+                details.distanceText.GetComponent<TMP_Text>().text = cards[i].cardDistance + "km";
             }
             else
             {
-                details.distanceText.GetComponent<Text>().text = cards[i].cardDistance;
+                details.distanceText.GetComponent<TMP_Text>().text = cards[i].cardDistance;
             }
 
-            details.healthText.GetComponent<Text>().text = cards[i].cardHealth;
+            details.healthText.GetComponent<TMP_Text>().text = cards[i].cardHealth;
             details.valueAge = cards[i].valueAge;
             details.maleParent = cards[i].maleParent;
             details.femaleParent = cards[i].femaleParent;

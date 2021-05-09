@@ -22,6 +22,7 @@ public class Matching : MonoBehaviour
     public GameObject studbookButton;
     public GameObject actualStudbook;
     public GameObject keeperGoodMatch;
+    private Animator anim;
     public GameObject keeperBadMatch;
     public GameObject keeperOkayMatch;
     public TMP_Text textTimer;
@@ -76,6 +77,7 @@ public class Matching : MonoBehaviour
         matchSetUp = GameObject.FindGameObjectWithTag("GameManager").GetComponent<MatchSetUp>();
         canvas = GameObject.FindGameObjectWithTag("Canvas").GetComponent<CheckClicks>();
         dropPosition = GameObject.FindGameObjectWithTag("Drop");
+        anim = keeperGoodMatch.GetComponent<Animator>();
 
         timer = assignTimer; //Sets timer to assigned variable (AH)
 
@@ -98,26 +100,26 @@ public class Matching : MonoBehaviour
         if (manager.state == MatchState.matching) //When the game manager is on the 'Matching' state (AH)
         {
             CheckMatch();
-            if(goodMatch == true)
-            {
+            //if(goodMatch == true)
+            //{
                 
                 keeperGoodMatch.SetActive(true);
-                keeperBadMatch.SetActive(false);
-                keeperOkayMatch.SetActive(false);
-            }
-            else if(okayMatch == true)
-            {
+            //    keeperBadMatch.SetActive(false);
+            //    keeperOkayMatch.SetActive(false);
+            //}
+            //else if(okayMatch == true)
+            //{
                 
-                keeperGoodMatch.SetActive(false);
-                keeperBadMatch.SetActive(false);
-                keeperOkayMatch.SetActive(true);
-            }
-            else if(badMatch == true)
-            {
-                keeperGoodMatch.SetActive(false);
-                keeperBadMatch.SetActive(true);
-                keeperOkayMatch.SetActive(false);              
-            }
+            //    keeperGoodMatch.SetActive(false);
+            //    keeperBadMatch.SetActive(false);
+            //    keeperOkayMatch.SetActive(true);
+            //}
+            //else if(badMatch == true)
+            //{
+            //    keeperGoodMatch.SetActive(false);
+            //    keeperBadMatch.SetActive(true);
+            //    keeperOkayMatch.SetActive(false);              
+            //}
 
             timerIsRunning = true; //Starts Timer (AH)
             Timer();
@@ -232,9 +234,10 @@ public class Matching : MonoBehaviour
                 if (child[i].gameObject == currentChoices[0])
                 {
                     //Debug.Log("Good Match");
-                    goodMatch = true;
-                    badMatch = false;
-                    okayMatch = false;
+                    //goodMatch = true;
+                    //badMatch = false;
+                    //okayMatch = false;
+                    anim.Play("KeeperHappy");
                     currentChoices[0].GetComponent<CardDetails>().matchValue = 0;
                     AddCardToRecap(currentMatchCard, currentChoices[0]); //Add match card and chosen choice card to recap (AH)
                     comboStage++;
@@ -249,9 +252,9 @@ public class Matching : MonoBehaviour
                 else if (child[i].gameObject == currentChoices[1])
                 {
                     //Debug.Log("Middle Match");
-                    goodMatch = false;
-                    badMatch = false;
-                    okayMatch = true;
+                    //goodMatch = false;
+                    //badMatch = false;
+                    //okayMatch = true;
                     currentChoices[1].GetComponent<CardDetails>().matchValue = 1;
                     AddCardToRecap(currentMatchCard, currentChoices[1]); //Add match card and chosen choice card to recap (AH)
                     comboStage = 0;
@@ -261,9 +264,10 @@ public class Matching : MonoBehaviour
                 else if (child[i].gameObject == currentChoices[2])
                 {
                     //Debug.Log("Bad Match");
-                    goodMatch = false;
-                    badMatch = true;
-                    okayMatch = false;
+                    //goodMatch = false;
+                    //badMatch = true;
+                    //okayMatch = false;
+                    anim.Play("KeeperWorried");
                     currentChoices[2].GetComponent<CardDetails>().matchValue = 2;
                     AddCardToRecap(currentMatchCard, currentChoices[2]); //Add match card and chosen choice card to recap (AH)
                     comboStage = 0;

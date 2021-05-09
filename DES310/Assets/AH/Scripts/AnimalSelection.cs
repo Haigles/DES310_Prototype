@@ -35,7 +35,7 @@ public class AnimalSelection : MonoBehaviour
         selectedEnclosure.canPick = false;
         matching.stageEnclosure = selectedEnclosure.gameObject;
         ResizeEnclosure(selectedEnclosure.gameObject);
-        manager.state = MatchState.setUp; //Chamges game manager state to 'SetUp' (AH)      
+        manager.state = MatchState.countdown; //Chamges game manager state to 'SetUp' (AH)      
         animalSelectionMenu.SetActive(false); //Hide selection menu (AH);
     }
 

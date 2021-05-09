@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MusicController : MonoBehaviour
 {
-    private AudioSource audioSource;
+    public AudioSource audioSource;
     public GameObject audioMusicObject;
     public Slider volumeSlider;
 
@@ -15,7 +15,6 @@ public class MusicController : MonoBehaviour
     void Start()
     {
         audioMusicObject = GameObject.FindWithTag("GameMusic");
-        audioSource = audioMusicObject.GetComponent<AudioSource>();
         musicVolume = PlayerPrefs.GetFloat("volume");
         audioSource.volume = musicVolume;
         volumeSlider.value = musicVolume;
@@ -30,6 +29,6 @@ public class MusicController : MonoBehaviour
 
     public void UpdateVolume(float volume)
     {
-        musicVolume = volume;
+        musicVolume = volumeSlider.value;
     }
 }

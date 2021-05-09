@@ -32,6 +32,12 @@ public class Matching : MonoBehaviour
     public bool badMatch;
     public bool okayMatch;
     public AnimalSelection animalSelection;
+    public GameObject badParticles;
+    public GameObject goodParticles;
+    public GameObject particleLocation;
+    public AudioSource goodAudio;
+    public AudioSource badAudio;
+    public AudioSource okayAudio;
     //public List<Sprite> stageEnclosureSprites = new List<Sprite>();
     //public List<Sprite> penguinStageEnclosureSprites = new List<Sprite>();
     public GameObject stageEnclosure;
@@ -237,6 +243,8 @@ public class Matching : MonoBehaviour
                     InstantiateIncrease("+" + increaseTimer, timerUI);
                     InstantiateIncrease("Combo x" + comboStage, scoreText.transform.gameObject);
                     CalculateScore(bestMatchScore + combos[comboStage]); //Give best score (AH)
+                    Instantiate(goodParticles, particleLocation.transform.position, Quaternion.identity);
+                    goodAudio.Play();
                 }
                 else if (child[i].gameObject == currentChoices[1])
                 {
@@ -248,6 +256,7 @@ public class Matching : MonoBehaviour
                     AddCardToRecap(currentMatchCard, currentChoices[1]); //Add match card and chosen choice card to recap (AH)
                     comboStage = 0;
                     CalculateScore(middleMatchScore + combos[comboStage]); //Give middle score (AH)
+                    okayAudio.Play();
                 }
                 else if (child[i].gameObject == currentChoices[2])
                 {
@@ -259,6 +268,8 @@ public class Matching : MonoBehaviour
                     AddCardToRecap(currentMatchCard, currentChoices[2]); //Add match card and chosen choice card to recap (AH)
                     comboStage = 0;
                     CalculateScore(worstMatchScore + combos[comboStage]); //Give worst score (AH)
+                    Instantiate(badParticles, particleLocation.transform.position, Quaternion.identity);
+                    badAudio.Play();
                 }
             }
 

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class MusicController : MonoBehaviour
 {
     private AudioSource audioSource;
-    public GameObject audioObject;
+    public GameObject audioMusicObject;
     public Slider volumeSlider;
 
     private float musicVolume;
@@ -14,8 +14,8 @@ public class MusicController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        audioObject = GameObject.FindWithTag("GameMusic");
-        audioSource = audioObject.GetComponent<AudioSource>();
+        audioMusicObject = GameObject.FindWithTag("GameMusic");
+        audioSource = audioMusicObject.GetComponent<AudioSource>();
         musicVolume = PlayerPrefs.GetFloat("volume");
         audioSource.volume = musicVolume;
         volumeSlider.value = musicVolume;

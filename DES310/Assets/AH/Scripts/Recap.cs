@@ -177,49 +177,52 @@ public class Recap : MonoBehaviour
 
         if (!hasUpdatedDialogue)
         {
-            if (choiceCard.matchValue == 0)
+            if (choiceCard != null)
             {
-                int rng = Random.Range(0, 2);
+                if (choiceCard.matchValue == 0)
+                {
+                    int rng = Random.Range(0, 2);
 
-                dialogueText.text = recapDialogue.dialogue[rng];
+                    dialogueText.text = recapDialogue.dialogue[rng];
 
-            }
-            else if (choiceCard.matchValue == 1)
-            {
-                if (choiceCard.highAge)
-                {
-                    dialogueText.text = recapDialogue.dialogue[8];
                 }
-                else if (choiceCard.highLocation)
+                else if (choiceCard.matchValue == 1)
                 {
-                    dialogueText.text = recapDialogue.dialogue[3];
+                    if (choiceCard.highAge)
+                    {
+                        dialogueText.text = recapDialogue.dialogue[8];
+                    }
+                    else if (choiceCard.highLocation)
+                    {
+                        dialogueText.text = recapDialogue.dialogue[3];
+                    }
+                    else if (choiceCard.highHealth)
+                    {
+                        dialogueText.text = recapDialogue.dialogue[4];
+                    }
+                    else if (choiceCard.highParents)
+                    {
+                        dialogueText.text = recapDialogue.dialogue[5];
+                    }
                 }
-                else if (choiceCard.highHealth)
+                else if (choiceCard.matchValue == 2)
                 {
-                    dialogueText.text = recapDialogue.dialogue[4];
-                }
-                else if (choiceCard.highParents)
-                {
-                    dialogueText.text = recapDialogue.dialogue[5];
-                }
-            }
-            else if (choiceCard.matchValue == 2)
-            {
-                if (choiceCard.highAge)
-                {
-                    dialogueText.text = recapDialogue.dialogue[8];
-                }
-                else if (choiceCard.highLocation)
-                {
-                    dialogueText.text = recapDialogue.dialogue[3];
-                }
-                else if (choiceCard.highHealth)
-                {
-                    dialogueText.text = recapDialogue.dialogue[6];
-                }
-                else if (choiceCard.highParents)
-                {
-                    dialogueText.text = recapDialogue.dialogue[7];
+                    if (choiceCard.highAge)
+                    {
+                        dialogueText.text = recapDialogue.dialogue[8];
+                    }
+                    else if (choiceCard.highLocation)
+                    {
+                        dialogueText.text = recapDialogue.dialogue[3];
+                    }
+                    else if (choiceCard.highHealth)
+                    {
+                        dialogueText.text = recapDialogue.dialogue[6];
+                    }
+                    else if (choiceCard.highParents)
+                    {
+                        dialogueText.text = recapDialogue.dialogue[7];
+                    }
                 }
             }
 

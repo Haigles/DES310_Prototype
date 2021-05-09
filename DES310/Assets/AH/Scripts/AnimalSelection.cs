@@ -34,7 +34,7 @@ public class AnimalSelection : MonoBehaviour
 
         selectedEnclosure.canPick = false;
         matching.stageEnclosure = selectedEnclosure.gameObject;
-        ResizeEnclosure(selectedEnclosure.gameObject);
+        //ResizeEnclosure(selectedEnclosure.gameObject);
         manager.state = MatchState.countdown; //Chamges game manager state to 'SetUp' (AH)      
         animalSelectionMenu.SetActive(false); //Hide selection menu (AH);
     }
@@ -49,6 +49,6 @@ public class AnimalSelection : MonoBehaviour
     public void ResizeEnclosure(GameObject enclosure)
     {
         enclosure.transform.localScale = new Vector3(0.5f, 0.5f, 1f);
-        enclosure.transform.localPosition += selectedEnclosure.newOffset;
+        //enclosure.transform.localPosition += selectedEnclosure.newOffset;
     }
 }

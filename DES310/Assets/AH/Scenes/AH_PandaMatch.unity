@@ -991,10 +991,10 @@ MonoBehaviour:
   m_ShapeLightFalloffSize: 0.5
   m_ShapeLightFalloffOffset: {x: 0, y: 0}
   m_ShapePath:
-  - {x: -2.943191, y: 0.42579508, z: 0}
-  - {x: -0.043671012, y: -1.2696154, z: 0}
-  - {x: 2.943191, y: 0.42579508, z: 0}
-  - {x: 0.010917783, y: 2.09937, z: 0}
+  - {x: -6.2, y: 0, z: 0}
+  - {x: 0, y: -3.7, z: 0}
+  - {x: 6.2, y: 0, z: 0}
+  - {x: 0, y: 3.5, z: 0}
 --- !u!114 &98623050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1008,7 +1008,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canPick: 1
-  newOffset: {x: 0, y: 0.05, z: 0}
   animalSelectionMenu: {fileID: 2015358962}
   plotHighlight: {fileID: 98623049}
   stageEnclosurePosition: {fileID: 1511859937}
@@ -1029,7 +1028,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.34, y: 4.42}
+    oldSize: {x: 19.2, y: 10.8}
     newSize: {x: 6.34, y: 4.42}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1049,8 +1048,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 98623048}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -1.9, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 1511859938}
   m_Father: {fileID: 1892037325}
@@ -1096,7 +1095,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bf295ba49fb04384682ec7062a2d7f8c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6d5ffe989f5ad074eb6eedf7cda6fe2c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -7995,10 +7994,10 @@ MonoBehaviour:
   m_ShapeLightFalloffSize: 0.5
   m_ShapeLightFalloffOffset: {x: 0, y: 0}
   m_ShapePath:
-  - {x: -2.932273, y: 0.40395945, z: 0}
-  - {x: -0.032753468, y: -1.258698, z: 0}
-  - {x: 2.9541092, y: 0.41487706, z: 0}
-  - {x: -0.010917902, y: 2.09937, z: 0}
+  - {x: -6.2, y: 0, z: 0}
+  - {x: 0, y: -3.7, z: 0}
+  - {x: 6.2, y: 0, z: 0}
+  - {x: 0, y: 3.5, z: 0}
 --- !u!114 &1168229065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8012,7 +8011,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canPick: 1
-  newOffset: {x: 0.3, y: 0.45, z: 0}
   animalSelectionMenu: {fileID: 2015358962}
   plotHighlight: {fileID: 1168229064}
   stageEnclosurePosition: {fileID: 938378826}
@@ -8033,7 +8031,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.34, y: 4.42}
+    oldSize: {x: 19.2, y: 10.8}
     newSize: {x: 6.34, y: 4.42}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -8053,8 +8051,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1168229063}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3, y: 0.45, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 3.27, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 938378827}
   m_Father: {fileID: 1892037325}
@@ -8100,7 +8098,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bf295ba49fb04384682ec7062a2d7f8c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6d5ffe989f5ad074eb6eedf7cda6fe2c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -8148,7 +8146,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.34, y: 4.42}
+    oldSize: {x: 19.2, y: 10.8}
     newSize: {x: 6.34, y: 4.42}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -8168,8 +8166,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1172614785}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3, y: 0.45, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -3.27, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 2022349389}
   m_Father: {fileID: 1892037325}
@@ -8188,7 +8186,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canPick: 1
-  newOffset: {x: -0.25, y: 0.15, z: 0}
   animalSelectionMenu: {fileID: 2015358962}
   plotHighlight: {fileID: 1172614789}
   stageEnclosurePosition: {fileID: 2022349388}
@@ -8229,10 +8226,10 @@ MonoBehaviour:
   m_ShapeLightFalloffSize: 0.5
   m_ShapeLightFalloffOffset: {x: 0, y: 0}
   m_ShapePath:
-  - {x: -2.9213548, y: 0.3821239, z: 0}
-  - {x: 0, y: -1.2805332, z: 0}
-  - {x: 2.9541082, y: 0.42579514, z: 0}
-  - {x: 0.010917664, y: 2.110288, z: 0}
+  - {x: -6.2, y: 0, z: 0}
+  - {x: 0, y: -3.7, z: 0}
+  - {x: 6.2, y: 0, z: 0}
+  - {x: 0, y: 3.5, z: 0}
 --- !u!212 &1172614790
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8273,7 +8270,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bf295ba49fb04384682ec7062a2d7f8c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6d5ffe989f5ad074eb6eedf7cda6fe2c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -10946,10 +10943,10 @@ MonoBehaviour:
   m_ShapeLightFalloffSize: 0.5
   m_ShapeLightFalloffOffset: {x: 0, y: 0}
   m_ShapePath:
-  - {x: -2.9650269, y: 0.42579484, z: 0}
-  - {x: -0.04367137, y: -1.3023689, z: 0}
-  - {x: 2.9431913, y: 0.40395975, z: 0}
-  - {x: 0.03275311, y: 2.1102884, z: 0}
+  - {x: -6.2, y: 0, z: 0}
+  - {x: 0, y: -3.7, z: 0}
+  - {x: 6.2, y: 0, z: 0}
+  - {x: 0, y: 3.5, z: 0}
 --- !u!114 &1570257473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10963,7 +10960,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canPick: 1
-  newOffset: {x: 0, y: 0.5, z: 0}
   animalSelectionMenu: {fileID: 2015358962}
   plotHighlight: {fileID: 1570257472}
   stageEnclosurePosition: {fileID: 1920798625}
@@ -10984,7 +10980,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.34, y: 4.42}
+    oldSize: {x: 19.2, y: 10.8}
     newSize: {x: 6.34, y: 4.42}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -11004,8 +11000,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1570257471}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.2, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 1.9, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 1920798626}
   m_Father: {fileID: 1892037325}
@@ -11051,7 +11047,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bf295ba49fb04384682ec7062a2d7f8c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6d5ffe989f5ad074eb6eedf7cda6fe2c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

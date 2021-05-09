@@ -9,7 +9,6 @@ public class SelectEnclosure : MonoBehaviour //Script goes onto every 'Plot' (AH
 {
     [Space(5)]
     public bool canPick = true; //checks if plot has been populated already (AH)
-    public Vector3 newOffset = new Vector3();
 
     [Header("Scene Canvas' Selection_Menu")]
     [Space(5)]

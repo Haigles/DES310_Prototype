@@ -1659,7 +1659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activateTimer: 1
-  assignTimer: 90
+  assignTimer: 75
   increaseTimer: 10
   timer: 60
   timerUI: {fileID: 2113869316}
@@ -1691,6 +1691,7 @@ MonoBehaviour:
   worstMatchScore: 0
   combos: 00000000000000003200000064000000af0000002c010000c2010000bc020000e8030000
   comboStage: 0
+  highestCombo: 0
   stageScoreThreshold: 3200000096000000fa0000005e010000f4010000ee020000e8030000e2040000dc050000d0070000
   currentStageIcon: 0
 --- !u!114 &211235626

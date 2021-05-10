@@ -153,19 +153,22 @@ public class Tutorial : MonoBehaviour
 
     void AgeMatch()
     {
-        if (!hasAddedCards)
+        if (tutorialStage == 2)
         {
-            if (tutorialStage == 2)
+            ClearPoints();
+            Point(pointPrefab, dialgoueUIElements.transform.gameObject, new Vector3(490, -120, 0), 180, "", false);
+
+            if (!hasAddedCards)
             {
                 SetUp(1);
                 enclosurePreview.SetActive(true);
                 scoreText.enabled = true;
                 scoreBG.gameObject.SetActive(true);
             }
-            
         }
         if (tutorialStage == 3)
         {
+            ClearPoints();
             Point(pointPrefab, matchPosition.transform.gameObject, new Vector3(110, 0, 0), 90, "Card_Name", false);
         }
         if (tutorialStage == 4)
@@ -195,9 +198,11 @@ public class Tutorial : MonoBehaviour
         {
             ClearCards(1);
             ClearPoints();
+            Point(pointPrefab, dialgoueUIElements.transform.gameObject, new Vector3(490, -120, 0), 180, "", false);
         }
         if (tutorialStage == 9)
         {
+            ClearPoints();
             Point(pointPrefab, scoreText.transform.gameObject, new Vector3(-110, 75, 0), -90, "", false);
         }
         if (tutorialStage == 10)
@@ -214,6 +219,7 @@ public class Tutorial : MonoBehaviour
             if (tutorialStage == 11)
             {
                 ClearPoints();
+                Point(pointPrefab, dialgoueUIElements.transform.gameObject, new Vector3(490, -120, 0), 180, "", false);
                 SetUp(2);
                 bestPosition = choicePositions[0].transform.gameObject;
             }
@@ -221,6 +227,7 @@ public class Tutorial : MonoBehaviour
         }
         if (tutorialStage == 12)
         {
+            ClearPoints();
             Point(pointPrefab, choicePositions[0].transform.gameObject, new Vector3(0, -60, 0), 0, "Card_Location_Info", true);
             Point(pointPrefab, choicePositions[1].transform.gameObject, new Vector3(0, -60, 0), 0, "Card_Location_Info", false);
         }
@@ -244,6 +251,8 @@ public class Tutorial : MonoBehaviour
         if (tutorialStage == 14)
         {
             ClearCards(2);
+            ClearPoints();
+            Point(pointPrefab, dialgoueUIElements.transform.gameObject, new Vector3(490, -120, 0), 180, "", false);
         }
     }
 
@@ -255,6 +264,7 @@ public class Tutorial : MonoBehaviour
             {         
                 SetUp(2);
                 bestPosition = choicePositions[1].transform.gameObject;
+                ClearPoints();
                 Point(pointPrefab, choicePositions[0].transform.gameObject, new Vector3(0, 115, 0), 180, "Card_Health_Info", true);
                 Point(pointPrefab, choicePositions[1].transform.gameObject, new Vector3(0, 115, 0), 180, "Card_Health_Info", false);
             }
@@ -280,6 +290,8 @@ public class Tutorial : MonoBehaviour
         if (tutorialStage == 17)
         {
             ClearCards(2);
+            ClearPoints();
+            Point(pointPrefab, dialgoueUIElements.transform.gameObject, new Vector3(490, -120, 0), 180, "", false);
         }
     }
 
@@ -291,7 +303,7 @@ public class Tutorial : MonoBehaviour
             {
                 SetUp(3);
                 bestPosition = choicePositions[1].transform.gameObject;
-
+                ClearPoints();
                 Point(pointPrefab, choicePositions[0].transform.gameObject, new Vector3(0, 100, 0), 180, "Card_Parents_Male_Info", true);
                 Point(pointPrefab, choicePositions[1].transform.gameObject, new Vector3(0, 100, 0), 180, "Card_Parents_Male_Info", true);
                 Point(pointPrefab, choicePositions[2].transform.gameObject, new Vector3(0, 100, 0), 180, "Card_Parents_Male_Info", false);
@@ -318,6 +330,8 @@ public class Tutorial : MonoBehaviour
         if (tutorialStage == 20)
         {
             ClearCards(3);
+            ClearPoints();
+            Point(pointPrefab, dialgoueUIElements.transform.gameObject, new Vector3(490, -120, 0), 180, "", false);
         }
     }
 
@@ -379,9 +393,14 @@ public class Tutorial : MonoBehaviour
             cameraHandler.ChangeCameraPosSelect();
             manager.state = MatchState.hub;
         }
-
+        if (tutorialStage == 0)
+        {
+            Point(pointPrefab, dialgoueUIElements.transform.gameObject, new Vector3(490, -120, 0), 180, "", false);
+        }
         if (tutorialStage == 1)
         {
+            ClearPoints();
+            //Point(pointPrefab, dialgoueUIElements.transform.gameObject, new Vector3(0, 175, 0), 180, "", false);
             basicPlot.SetActive(true);
             canContinue = false;
         }
@@ -418,6 +437,7 @@ public class Tutorial : MonoBehaviour
         if (tutorialStage >= 21)
         {
             FinalMatch();
+            ClearPoints();
         }
     }
 

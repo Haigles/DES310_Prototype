@@ -57,7 +57,8 @@ public class Matching : MonoBehaviour
     [SerializeField]
     List<int> combos = new List<int>();
     public int comboStage = 0;
-    private int highestCombo = 0;
+    [HideInInspector]
+    public int highestCombo = 0;
     [SerializeField]
     List<int> stageScoreThreshold;
     public int currentStageIcon = 0;

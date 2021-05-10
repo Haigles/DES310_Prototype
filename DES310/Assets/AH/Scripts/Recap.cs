@@ -166,6 +166,7 @@ public class Recap : MonoBehaviour
         matching.score = 0;
         matching.scoreText.text = "Score: " + matching.score;
         matching.comboStage = 0;
+        matching.highestCombo = 0;
         //reset  all variables(AH)
 
         manager.state = MatchState.hub; //Changes game manager state to 'Hub' (AH)

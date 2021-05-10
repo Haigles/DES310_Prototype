@@ -34,6 +34,7 @@ public class Recap : MonoBehaviour
     private int checkMatchInt = 0;
     public int comboStage = 0;
     private GameManager manager;
+    public Confetti confettiCannon = null;
     public CameraHandler cameraHandler;
     private MatchSetUp matchSetUp;
     private Matching matching;
@@ -253,9 +254,11 @@ public class Recap : MonoBehaviour
 
     public void HomeButton()
     {
+        hasUpdatedDialogue = false;
         enclosurePreview.panda = false;
         enclosurePreview.penguin = false;
         enclosurePreview.enclosureStage = 0;
+        confettiCannon.counter++;
         manager.state = MatchState.reset; //Change game manager state to 'Reset' (AH)
     }
 }

@@ -208,7 +208,7 @@ public class Tutorial : MonoBehaviour
         if (tutorialStage == 10)
         {
             ClearPoints();
-            Point(pointPrefab, enclosurePreview.transform.gameObject, new Vector3(-80, -80, 0), -90, "", false);
+            Point(pointPrefab, enclosurePreview.transform.gameObject, new Vector3(-240, -135, 0), -90, "", false);
         }
     }
 

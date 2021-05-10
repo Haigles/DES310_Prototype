@@ -208,6 +208,13 @@ public class Matching : MonoBehaviour
             cardDetails.highHealth = false;
             cardDetails.highParents = true;
         }
+        else       
+        {
+            cardDetails.highAge = false;
+            cardDetails.highLocation = false;
+            cardDetails.highHealth = false;
+            cardDetails.highParents = false;
+        }
     }
 
     static int SortByValue(GameObject value1, GameObject value2)

@@ -7407,7 +7407,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enclosureUpgradesPanda:
-  - {fileID: 21300000, guid: 6d5ffe989f5ad074eb6eedf7cda6fe2c, type: 3}
+  - {fileID: 21300000, guid: a4d4b6059f31c93488beb94a3c48eb1f, type: 3}
   - {fileID: 21300000, guid: 7bc64f3ed263d2c498d38f7a2dfadfc0, type: 3}
   - {fileID: 21300000, guid: 30ef395007113c745a5ef90c37dcb02c, type: 3}
   - {fileID: 21300000, guid: 39465f646d7b70c4e997b7bc06dae49a, type: 3}
@@ -7419,7 +7419,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4bf82cf5118591d4883446801eac9e98, type: 3}
   - {fileID: 21300000, guid: 7bb3c30e29b5e2c4fb85c76b84cd4679, type: 3}
   enclosureUpgradesPandaTextures:
-  - {fileID: 2800000, guid: ee1c267155ed02b49b6de35df6629eb6, type: 3}
+  - {fileID: 2800000, guid: a4d4b6059f31c93488beb94a3c48eb1f, type: 3}
   - {fileID: 2800000, guid: 7bc64f3ed263d2c498d38f7a2dfadfc0, type: 3}
   - {fileID: 2800000, guid: 30ef395007113c745a5ef90c37dcb02c, type: 3}
   - {fileID: 2800000, guid: 39465f646d7b70c4e997b7bc06dae49a, type: 3}

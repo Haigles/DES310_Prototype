@@ -71,6 +71,9 @@ public class Tutorial : MonoBehaviour
     GameObject basicPlot;
 
     [SerializeField]
+    GameObject scoreBG;
+
+    [SerializeField]
     TMP_Text dialogueText;
 
     [SerializeField]
@@ -101,6 +104,7 @@ public class Tutorial : MonoBehaviour
         basicPlot.SetActive(false);
         enclosurePreview.SetActive(false);
         scoreText.enabled = false;
+        scoreBG.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -156,6 +160,7 @@ public class Tutorial : MonoBehaviour
                 SetUp(1);
                 enclosurePreview.SetActive(true);
                 scoreText.enabled = true;
+                scoreBG.gameObject.SetActive(true);
             }
             
         }

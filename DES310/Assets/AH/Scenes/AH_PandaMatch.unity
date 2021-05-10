@@ -247,15 +247,15 @@ RectTransform:
   m_GameObject: {fileID: 2745957}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1862117953}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.47998047, y: 3.8800087}
-  m_SizeDelta: {x: -59.471985, y: 1.0693817}
+  m_AnchoredPosition: {x: -1.9100037, y: 5.3199997}
+  m_SizeDelta: {x: 72.37172, y: -169.2687}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &32131358
 GameObject:
@@ -1379,14 +1379,14 @@ RectTransform:
   m_GameObject: {fileID: 158863421}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2113, y: 1.2113, z: 1.2113}
   m_Children: []
   m_Father: {fileID: 1962299621}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -76.3, y: -13.2}
+  m_AnchoredPosition: {x: -76.3, y: -3.6}
   m_SizeDelta: {x: -88.97223, y: 4.380615}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &158863423
@@ -1534,6 +1534,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1069705783}
+  - {fileID: 245193497}
   - {fileID: 1991817227}
   m_Father: {fileID: 1153822728}
   m_RootOrder: 1
@@ -1775,6 +1776,7 @@ MonoBehaviour:
   scoreText: {fileID: 1991817228}
   dialgoueUIElements: {fileID: 1962299620}
   basicPlot: {fileID: 1508742121}
+  scoreBG: {fileID: 245193496}
   dialogueText: {fileID: 2745958}
   dialogueStrings:
   - "Hello, a welcome to the tutorial for Zoo\xB2!  Click on me to continue."
@@ -1959,6 +1961,81 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 217128881}
+  m_CullTransparentMesh: 0
+--- !u!1 &245193496
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 245193497}
+  - component: {fileID: 245193499}
+  - component: {fileID: 245193498}
+  m_Layer: 5
+  m_Name: ScoreBGTut
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &245193497
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245193496}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 169839103}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 51.90002, y: 79.99996}
+  m_SizeDelta: {x: 325.07718, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &245193498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245193496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -8865200633266049727, guid: 9e2002fea1562e849baa5bfc77f510db, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &245193499
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245193496}
   m_CullTransparentMesh: 0
 --- !u!1 &247965302
 GameObject:
@@ -5082,8 +5159,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 63.52, y: 6.26}
+  m_SizeDelta: {x: 127.03186, y: 12.510727}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &771263758
 MonoBehaviour:
@@ -6231,7 +6308,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -346, y: 139}
+  m_AnchoredPosition: {x: -346, y: 59}
   m_SizeDelta: {x: 129.09549, y: 120.57424}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &924725779
@@ -7123,7 +7200,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 7
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -8489,7 +8566,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1251043878
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9283,7 +9360,7 @@ GameObject:
   - component: {fileID: 1330169139}
   - component: {fileID: 1330169142}
   m_Layer: 5
-  m_Name: Enclosure_Preview*
+  m_Name: Enclosure_Preview
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13486,8 +13563,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 43.210167, y: -0.12976328}
-  m_SizeDelta: {x: 154.28552, y: 129.08159}
+  m_AnchoredPosition: {x: 109.13, y: 26.82}
+  m_SizeDelta: {x: 127.339325, y: 260.92517}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1862117954
 MonoBehaviour:
@@ -14553,7 +14630,7 @@ RectTransform:
   m_GameObject: {fileID: 1962299620}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 1780686655}
   - {fileID: 158863422}
@@ -14562,7 +14639,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 124.9, y: 78.998}
+  m_AnchoredPosition: {x: 937, y: 78.998}
   m_SizeDelta: {x: 250, y: 158.59503}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1972406674
@@ -14596,7 +14673,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorialMatchCards:
   - cardName: Kang Kang
-    cardPicture: {fileID: 2800000, guid: 151656d3c2a0eaf4a841b4e0273ce43c, type: 3}
+    cardPicture: {fileID: 2800000, guid: c0b427f1197a7244a97e89bc5cdf3d73, type: 3}
     backgroundColour: {r: 0.3726415, g: 1, b: 0.9815728, a: 1}
     cardAge: 5
     cardParents: 
@@ -14608,7 +14685,7 @@ MonoBehaviour:
     valueDistance: 0
     valueHealth: 0
   - cardName: Zhuang Zhuang
-    cardPicture: {fileID: 2800000, guid: bbf80f851a53df84ba41b60c288fd34a, type: 3}
+    cardPicture: {fileID: 2800000, guid: aeaa42aacce8b9f419b686029a0c14f4, type: 3}
     backgroundColour: {r: 0.4, g: 1, b: 0.5739985, a: 1}
     cardAge: 
     cardParents: 
@@ -14620,7 +14697,7 @@ MonoBehaviour:
     valueDistance: 0
     valueHealth: 0
   - cardName: Ning Ning
-    cardPicture: {fileID: 2800000, guid: af7553585fbb38f4b97513aaa1cd8a00, type: 3}
+    cardPicture: {fileID: 2800000, guid: 346a183ea1f9dbd4584895e58e1037f6, type: 3}
     backgroundColour: {r: 1, g: 0.87907803, b: 0.3254717, a: 1}
     cardAge: 
     cardParents: 
@@ -14632,7 +14709,7 @@ MonoBehaviour:
     valueDistance: 0
     valueHealth: 0
   - cardName: Qi Qi
-    cardPicture: {fileID: 2800000, guid: 14595b2dac772f349abd5ad15fb937f2, type: 3}
+    cardPicture: {fileID: 2800000, guid: 60b48fcff30715241840b01cbbb6fce4, type: 3}
     backgroundColour: {r: 1, g: 0.37647057, b: 0.53525, a: 1}
     cardAge: 
     cardParents: 
@@ -14644,7 +14721,7 @@ MonoBehaviour:
     valueDistance: 0
     valueHealth: 0
   - cardName: Kang Kang
-    cardPicture: {fileID: 2800000, guid: 151656d3c2a0eaf4a841b4e0273ce43c, type: 3}
+    cardPicture: {fileID: 2800000, guid: c0b427f1197a7244a97e89bc5cdf3d73, type: 3}
     backgroundColour: {r: 0.6578109, g: 0.4009434, b: 1, a: 1}
     cardAge: 5
     cardParents: 
@@ -14657,7 +14734,7 @@ MonoBehaviour:
     valueHealth: 1
   tutorialChoiceCards:
   - cardName: Danya
-    cardPicture: {fileID: 2800000, guid: 253877abf82c3a84294c49775abbe1ba, type: 3}
+    cardPicture: {fileID: 2800000, guid: d959b601c5a0b5d458a98c2e09fd7b44, type: 3}
     backgroundColour: {r: 1, g: 0.59165156, b: 0.1745283, a: 1}
     cardAge: 5
     cardParents: 
@@ -14669,7 +14746,7 @@ MonoBehaviour:
     valueDistance: 0
     valueHealth: 0
   - cardName: Yuan Yuan
-    cardPicture: {fileID: 2800000, guid: 568057a7527ffc549a210e411bf966ce, type: 3}
+    cardPicture: {fileID: 2800000, guid: c3a450f02e8e3fa468eb87bdfc49c98c, type: 3}
     backgroundColour: {r: 0.5538003, g: 0.6941115, b: 0.8962264, a: 1}
     cardAge: 
     cardParents: 
@@ -14681,7 +14758,7 @@ MonoBehaviour:
     valueDistance: 0
     valueHealth: 0
   - cardName: Ting Ting
-    cardPicture: {fileID: 2800000, guid: 93820ea20405c424bba096dc83d35ee9, type: 3}
+    cardPicture: {fileID: 2800000, guid: b811f14fdb8e40144a5156c2cb27a77f, type: 3}
     backgroundColour: {r: 0.29754195, g: 0.6320754, b: 0.15205587, a: 1}
     cardAge: 
     cardParents: 
@@ -14693,7 +14770,7 @@ MonoBehaviour:
     valueDistance: 2
     valueHealth: 0
   - cardName: Mai
-    cardPicture: {fileID: 2800000, guid: af7553585fbb38f4b97513aaa1cd8a00, type: 3}
+    cardPicture: {fileID: 2800000, guid: 3868cd3c92728ea4bbeef7f2f547825c, type: 3}
     backgroundColour: {r: 0.5188679, g: 0.061187245, b: 0.11364386, a: 1}
     cardAge: 
     cardParents: 
@@ -14705,7 +14782,7 @@ MonoBehaviour:
     valueDistance: 0
     valueHealth: 1
   - cardName: Ty Lee
-    cardPicture: {fileID: 2800000, guid: 93820ea20405c424bba096dc83d35ee9, type: 3}
+    cardPicture: {fileID: 2800000, guid: 7a3684c6f1d24c349b800bc9cacd1ab5, type: 3}
     backgroundColour: {r: 1, g: 0.4575472, b: 0.8899705, a: 1}
     cardAge: 
     cardParents: 
@@ -14717,7 +14794,7 @@ MonoBehaviour:
     valueDistance: 0
     valueHealth: 0
   - cardName: Lucy
-    cardPicture: {fileID: 2800000, guid: 35baaee32593b994c9b50da0e74de2ca, type: 3}
+    cardPicture: {fileID: 2800000, guid: 015d04d083a65fd4c98574a566cfeb59, type: 3}
     backgroundColour: {r: 0, g: 0.6412146, b: 0.6156863, a: 1}
     cardAge: 
     cardParents: 
@@ -14729,7 +14806,7 @@ MonoBehaviour:
     valueDistance: 0
     valueHealth: 0
   - cardName: Kyoshi
-    cardPicture: {fileID: 2800000, guid: 93820ea20405c424bba096dc83d35ee9, type: 3}
+    cardPicture: {fileID: 2800000, guid: ef88f9dac622e2f4db5fcdda0f8628db, type: 3}
     backgroundColour: {r: 0.4739716, g: 0.6509434, b: 0.26099145, a: 1}
     cardAge: 
     cardParents: 
@@ -14741,7 +14818,7 @@ MonoBehaviour:
     valueDistance: 0
     valueHealth: 0
   - cardName: Yangchen
-    cardPicture: {fileID: 2800000, guid: a771e29c47489d24c8851b97c32ea6fc, type: 3}
+    cardPicture: {fileID: 2800000, guid: 94a90d731b2d31d459ffea2739cfcd73, type: 3}
     backgroundColour: {r: 0.9733331, g: 0.72156864, b: 0, a: 1}
     cardAge: 
     cardParents: 
@@ -14753,7 +14830,7 @@ MonoBehaviour:
     valueDistance: 0
     valueHealth: 0
   - cardName: Danya
-    cardPicture: {fileID: 2800000, guid: 253877abf82c3a84294c49775abbe1ba, type: 3}
+    cardPicture: {fileID: 2800000, guid: d959b601c5a0b5d458a98c2e09fd7b44, type: 3}
     backgroundColour: {r: 1, g: 0.5921569, b: 0.1764706, a: 1}
     cardAge: 5
     cardParents: 
@@ -14765,7 +14842,7 @@ MonoBehaviour:
     valueDistance: 0
     valueHealth: 0
   - cardName: Yuan Yuan
-    cardPicture: {fileID: 2800000, guid: 568057a7527ffc549a210e411bf966ce, type: 3}
+    cardPicture: {fileID: 2800000, guid: c3a450f02e8e3fa468eb87bdfc49c98c, type: 3}
     backgroundColour: {r: 0.5568628, g: 0.69411767, b: 0.8980392, a: 0}
     cardAge: 7
     cardParents: 
@@ -14777,7 +14854,7 @@ MonoBehaviour:
     valueDistance: 1
     valueHealth: 1
   - cardName: Ting Ting
-    cardPicture: {fileID: 2800000, guid: 93820ea20405c424bba096dc83d35ee9, type: 3}
+    cardPicture: {fileID: 2800000, guid: b811f14fdb8e40144a5156c2cb27a77f, type: 3}
     backgroundColour: {r: 0.29803923, g: 0.6313726, b: 0.15294118, a: 0}
     cardAge: 10
     cardParents: 
@@ -14843,7 +14920,7 @@ MonoBehaviour:
     cardAge: 12
     cardParents: 
     cardDistance: China
-    cardHealth: Known Killer
+    cardHealth: Overweight
     valueAge: 12
     maleParent: Gu Gu
     femaleParent: Bao Bao
@@ -16537,7 +16614,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 169839103}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
